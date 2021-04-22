@@ -1,0 +1,162 @@
+body{
+    		background: #F2F2F2;
+    	}
+    	* {
+			margin: 0;
+			padding: 0;
+		}
+		img{
+			border: none;
+		}
+		ul,li{
+			list-style: none;
+		}
+		.fl{
+			float: left;
+		}
+		.fr{
+			float: right;
+		}
+		/*清除浮动代码*/
+		.clearfloat:after{
+			display:block;
+			clear:both;
+			content:"";
+			visibility:hidden;
+			height:0;
+		}
+		.clearfloat{
+			zoom:1;
+		}
+		.box{
+			padding: 1%;
+		}
+		.box a:hover{
+			text-decoration: none;
+		}
+		.center1{
+			width: 100%;
+		}
+		.left1{
+			width: 49%;
+			background: #fff;
+		}
+		.right1{
+			width: 50%;
+			background: #fff;
+		}
+		.title{
+			border-bottom: 1px solid #DDDDDD;
+			padding: 10px 20px;
+		}
+		.title img{
+			width: 26px;
+			height: 26px;
+			position: relative;
+			top: 0px;
+		}
+		.title span{
+			font-size: 18px;
+			color: #333;
+			margin-left: 10px;
+		}
+		/*快捷方式*/
+		.ul_list{
+			padding: 5px 20px 20px 20px;
+		}
+		.ul_list li{
+			width: 17.4%;
+			height: 68px;
+			float: left;
+			padding: 20px 0;
+			text-align: center;
+			background: #F8F8F8;
+			margin-right: 3%;
+			margin-top: 15px;
+		}
+		.ul_list li:last-child{
+			margin-right: 0;
+		}
+		.ul_list li:nth-child(5){
+			margin-right: 0;
+		}
+		.ul_list li img{
+			width: 30px;
+			height: 30px;
+		}
+		.ul_list li div{
+			font-size: 14px;
+			color: #666666;
+			margin-top: 10px;
+		}
+		/*待办事项*/
+		.ul_right{
+			padding: 5px 20px 20px 20px;
+		}
+		.ul_right li{
+			width: 28%;
+			height: 68px;
+			background: #F8F8F8;
+			float: left;
+			margin-right: 3%;
+			margin-top: 15px;
+			padding: 20px 0;
+			padding-left: 3.33333333%;
+		}
+		.ul_right li:nth-child(3){
+			margin-right: 0;
+		}
+		.ul_right li:last-child{
+			margin-right: 0;
+		}
+		.div_1{
+			font-size: 16px;
+			color:#999999;
+		}
+		.div_2{
+			font-size: 22px;
+			color:#009688;
+			margin-top: 12px;
+		}
+		/*数据概况*/
+		.center2{
+			background: #fff;
+			margin-top: 1%;
+		}
+		.data{
+			padding: 20px;
+		}
+		.datacen{
+			width: 48%;
+			height: auto;
+		}
+		.datacen img{
+			width: 100%;
+			height: auto;
+		}
+		
+		/*系统信息*/
+		.xtcen{
+			width: 49.9%;
+			border-right: 1px solid #DDDDDD;
+		}
+		.xtlist{
+			height: 59px;
+			line-height: 59px;
+			font-size: 20px;
+			padding-left: 14px;
+		}
+		.xitong .xtcen:nth-child(2){
+			border-right: none;
+		}
+		.xtcen .xtlist:nth-of-type(even){
+			background: #F8F8F8;
+		}
+		.xtlist span:nth-child(1){
+			font-size: 16px;
+			color: #999;
+		}
+		.xtlist span:nth-child(2){
+			font-size: 16px;
+			color: #111;
+		}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+{load href="/static/manage/css/style.css" /}
+{load href="/static/manage/js/jquery-1.8.1.min.js" /}
+{load href="/static/manage/layui/css/layui.css" /}
+{load href="/static/manage/layui/layui.js" /}
+{load href="/static/manage/js/public.js" /}
+{load href="/static/manage/js/jquery.form.js" /}
+<style>
+.layui-form{margin: 0 auto;width: 90%;margin-top: 10px;}
+.layui-form-pane .layui-input-block{width:50%;}
+#ac img{height:100px;margin-left:20px;}
+.delete{background: #666;color: #fff;height: 30px;line-height: 30px;width: 100px;text-align: center;margin-top: 10px;cursor:pointer;}
+</style>
+<form class="layui-form layui-form-pane" action="{:url('wdl_index_post')}" id="form" >
+  <input type="hidden" name="id" value="{$data.id}">
+  <div class="layui-form-item">
+    <label class="layui-form-label">广告位置</label>
+    <div class="layui-input-block"><span class="require-field">*</span>
+      <select name="cat_id" class="must" msg="请选择广告位置">
+        <option value="0">请选择</option>
+        {volist name="cat_list" id="vo"}
+	      <option value="{$vo.id}" {if condition="$vo.id eq $data.cat_id"}selected{/if}>{$vo.name}</option>
+	    {/volist}
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">广告标题</label>
+    <div class="layui-input-block"><span class="require-field">*</span>
+      <input type="text" name="title"  placeholder="请输入广告标题" value="{$data.title}" class="layui-input must">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">广告类型</label>
+    <div class="layui-input-block">
+      <select name="type" >
+        <option value="0">请选择</option>
+        <option value="1" {if condition="$data.type eq 1"}selected{/if}>菜单链接</option>
+		    <option value="2" {if condition="$data.type eq 2"}selected{/if}>案例</option>
+		    <option value="3" {if condition="$data.type eq 3"}selected{/if}>网点</option>
+		    <option value="6" {if condition="$data.type eq 6"}selected{/if}>外链</option>
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">类型参数</label>
+    <div class="layui-input-block">
+      <input type="text" name="url" value="{$data.url}"  placeholder="请输入广告类型参数" class="layui-input">
+    </div>
+  </div>
+  <p class="red" style="margin-bottom:15px;">温馨提示：<br>选择菜单链接，需要技术指导。选择案例，需要输入案例ID。<br>
+  选择网点，需要输入网点ID。选择外联，需要输入带http的链接。</p>
+  <div class="layui-form-item">
+    <label class="layui-form-label">排序</label>
+    <div class="layui-input-block">
+      <input type="number" name="listorder" value="{$data.listorder}"  class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">上传广告图</label>
+     <button type="button" class="layui-btn" id="addimg">
+	  <i class="layui-icon">&#xe67c;</i>上传图片
+	</button>
+  </div>
+  <div class="layui-form-item" {if condition="empty($data.img)"}style="display:none;"{/if}  id="ac">
+    <label class="layui-form-label">图片</label>
+    <div class="layui-input-block"><span class="require-field">*</span>
+      <img class="img"  {if condition="$data.img"}src="{$data.img}"{/if}/>
+	  <input id="img" name="img" type="hidden"  {if condition="$data.img"}value="{$data.img}"{/if}/>
+      <p class="delete">移除</p>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn" id="form_btn">立即提交</button>
+	  <button type="reset" class="layui-btn layui-btn-normal">重置</button>
+    </div>
+  </div>
+</form>
+<script>
+$(".delete").on('click',function(){
+   $("#ac").hide();
+   $(".img").attr("src","");
+   $("#img").val('');
+})
+layui.use('form', function(){
+  var form = layui.form;
+  submit_form();
+})
+layui.use('upload', function(){
+  var upload = layui.upload;
+   
+  //执行实例
+  var uploadInst = upload.render({
+    elem: '#addimg' //绑定元素
+    ,url: "{:url('admin/upload/up_do')}" //上传接口
+    ,done: function(ret){
+       $("#ac").show();
+       $(".img").attr('src',ret.pic);
+	   $("#img").val(ret.pic);
+    }
+    ,error: function(){
+       layer.msg('上传有误');
+    }
+  });
+});
+</script>
+</body>
+</html>

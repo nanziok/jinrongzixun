@@ -1,0 +1,20 @@
+.layui-layout-admin .layui-header{background-color: #fff;border-bottom: 1px solid #e6e6e6;}
+.daohang a{color:#333!important;font-size: 16px;}
+.layui-right{float:right;}
+.layui-laypage-limits{display:none!important;}
+.layui-table, .layui-table-view{margin:0}
+.layui-form-item{margin-bottom:10px;}
+.layui-table-tool-temp {padding-right: 170px;}
+.layui-table-cell .layui-form-checkbox[lay-skin=primary]{top:5px;}
+.layui-nav-item i{margin-right:10px;font-size: 16px;}
+.layui-nav-tree .layui-nav-child a{margin-left:24px;}
+.border-left{border-left: 4px solid #009688;padding-left: 10px;}
+.require-field{color:red;font-weight:600;float: right;font-size:14px;margin-right: -22px;}
+.layui-body{bottom:40px;overflow-y:hidden;}
+.layui-table td, .layui-table th, .layui-table-col-set, .layui-table-fixed-r, .layui-table-grid-down, .layui-table-header, .layui-table-page, .layui-table-tips-main, .layui-table-tool, .layui-table-total, .layui-table-view, .layui-table[lay-skin="line"], .layui-table[lay-skin="row"] {
+    border-width: 1px;border-top-width: 0.1px;
+}
+.layui-table-tool{border-left: 4px solid #009688!important;}
+.daohang{height: 50px;line-height: 50px;padding: 10px 15px;}
+.layui-right { margin-top: 5px;}
+.red{color: red!important;font-style: initial!important;}

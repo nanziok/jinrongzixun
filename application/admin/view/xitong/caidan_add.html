@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+{load href="/static/manage/css/style.css" /}
+{load href="/static/manage/js/jquery-1.8.1.min.js" /}
+{load href="/static/manage/layui/css/layui.css" /}
+{load href="/static/manage/layui/layui.js" /}
+{load href="/static/manage/js/public.js" /}
+{load href="/static/manage/js/jquery.form.js" /}
+
+<style>
+.layui-form{margin: 0 auto;width: 90%;margin-top: 10px;}
+.layui-form-pane .layui-input-block{width:50%;}
+</style>
+<form class="layui-form layui-form-pane" action="{:url('wdl_caidan_add_do')}" id="form" >
+  <div class="layui-form-item">
+    <label class="layui-form-label">所属菜单</label>
+    <div class="layui-input-block">
+      <select name="fid">
+        <option value="0">顶级菜单</option>
+        {volist name="cat" id="vo"}
+	      <option value="{$vo.id}">{$vo.name}</option>
+	    {/volist}
+      </select>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">菜单名称</label>
+    <div class="layui-input-block"><span class="require-field">*</span>
+      <input type="text" name="name"  placeholder="请输入菜单名称" class="layui-input must">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">控制器</label>
+    <div class="layui-input-block"><span class="require-field">*</span>
+      <input type="text" name="m"  placeholder="请输入菜单控制器" class="layui-input must">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">方法</label>
+    <div class="layui-input-block"><span class="require-field">*</span>
+      <input type="text" name="a" placeholder="请输入菜单方法" class="layui-input must">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">排序</label>
+    <div class="layui-input-block">
+      <input type="number" name="listorder" value="50" placeholder="请输入排序" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">图标</label>
+    <div class="layui-input-block">
+      <input type="text" name="icon"  placeholder="请输入图标" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">是否显示</label>
+    <div class="layui-input-block">
+      <input type="checkbox" checked="" name="is_show" lay-skin="switch" lay-filter="switchTest" lay-text="显示|隐藏">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn" id="form_btn">立即提交</button>
+	  <button type="reset" class="layui-btn layui-btn-normal">重置</button>
+    </div>
+  </div>
+</form>
+<script>
+layui.use('form', function(){
+  var form = layui.form;
+  submit_form();
+})
+</script>
+</body>
+</html>

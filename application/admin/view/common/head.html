@@ -1,0 +1,28 @@
+  <div class="layui-header">
+    <div class="layui-logo" style="background: #393D49;border-bottom: 1px solid #393D49;">{$site.name}</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left daohang">
+	  <li class="layui-nav-item"><a href="{:url('index/main')}"   target="main" class="layui-icon iconfont iconshouye"></a></li>
+	  <li class="layui-nav-item"><a href="javascript:void(0);" onclick="open_menu();" class="layui-icon layui-icon-spread-left"></a></li>
+      <li class="layui-nav-item"><a href="javascript:void(0);" onclick="clear_cache();" class="layui-icon layui-icon-fonts-clear"></a></li>
+    </ul>
+    <ul class="layui-nav layui-layout-right daohang">
+      <li class="layui-nav-item">
+        <a href="javascript:;">您好,{$admin.name}</a>
+      </li>
+      <li class="layui-nav-item"><a href="{:url("login/out")}"  class="iconfont icontuichu" title="退出登录"></a></li>
+    </ul>
+  </div>
+  <script>
+    var is_open = 0 
+    function open_menu(){
+	if(is_open == 1){
+	   $("#caidan .layui-nav-item").removeClass("layui-nav-itemed");
+	   is_open = 0;
+	}else{
+	   $("#caidan .layui-nav-item").addClass("layui-nav-itemed");
+	   is_open = 1;
+	}
+	
+	}
+  </script>

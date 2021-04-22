@@ -1,0 +1,122 @@
+		body{
+			margin:0;
+			padding:0;
+			background-size: cover;
+			background: url(../images/login/beijing1.jpg);
+		}
+		div,ul,p,h1,h2,h3,h4,h5,h6,ol,dl,pre{
+			list-style:none;
+			margin:0;
+			padding:0;
+		}
+		a{
+			text-decoration:none;
+		}
+		.subject-middle {
+			max-width: 550px;
+			height: 250px;
+			margin: 0 auto;
+			background-color: rgba(0,0,0,0.3);
+			margin-top: 250px;
+		}
+		.subject-middle:after {
+			content: "";
+			 display: block;
+			 clear: both;
+		}
+		.subject-middle-left {
+			float: left;
+			color: #fff;
+			font-size: 18px;
+			background: url(../images/login/2864265402763801.png) no-repeat;
+			background-size: 150px 100px;
+			background-position: 5px 60px;
+			height: 300px;
+			padding: 100px 20px 0;
+			margin-left: 30px;
+		}
+		
+		.subject-middle-right{
+			float: left;
+			margin-left: 50px;
+			width: 50%;
+		}
+		.subject-middle-right .title {
+			margin-top: 30px;
+			color: #fff;
+			font-size: 14px;
+		}
+		.uname, .upwd, .verification-code {
+			margin-top: 10px;
+		}
+		.uname span, .upwd span, .verification-code span {
+			background: #fff;
+			display: inline-block;
+			padding: 5px;
+		}
+		.uname span img, .upwd span img, .verification-code span img {
+			width: 15px;
+			height: 15px;
+		}
+		.uname input, .upwd input, .verification-code input {
+			height: 40px;
+			width: 70%;
+			position: relative;
+			bottom: -2px;
+			padding-left: 10px;
+			outline: none;
+			font-size: 12px;
+		}
+		.verification-code input {
+			width: 30%;
+		}
+		.verification-code .yzm {
+			margin-left: 25px;
+		}
+		.verification-code .yzm img {
+			width: 70px;
+		}
+		.remember-account {
+			margin-top: 5px;
+		}
+		.remember-account span {
+			font-size: 12px;
+			position: relative;
+			bottom: 2px;
+			color: #fff;
+		}
+		.login-immediately {
+			width: 70%;
+			background: #19ADED;
+			border-radius: 7px;
+			margin-top: 30px;
+		}	
+		.login-immediately a {
+			display: block;
+			color: #fff;
+			text-align: center;
+			height: 30px;	
+			line-height: 30px;
+			font-size: 13px;
+		}
+		.login-immediately a:hover{
+		color:#fff;
+			text-decoration: none;
+		}
+	    .verification-code {
+	        margin-top: 10px;
+		}
+		.verification-code input{
+			width: 32%;
+		}
+		.verification-code .verification-code-picture {
+			background: #fff;
+			height: 31px;
+			padding: 0;
+			top: 9px;
+			margin-right: 60px;
+		}
+		.verification-code .verification-code-picture img {
+			width: 100%;
+			height: 100%;
+		}

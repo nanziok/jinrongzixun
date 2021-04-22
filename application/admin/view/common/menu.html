@@ -1,0 +1,19 @@
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test" id="caidan">
+          {volist name="menu" id="vo"}
+			<li class="layui-nav-item">
+			  <a {if condition="$vo.son"}href="javascript:;"{else} href="{:url($vo['m'].'/'.$vo['a'])}" target="main"{/if}><i class="iconfont {$vo.icon}"></i>{$vo.name}</a>
+			  {if condition="$vo.son"}
+                  <dl class="layui-nav-child">
+					{volist name="vo.son" id="vo2"}
+					<dd><a  href="{:url($vo2['m'].'/'.$vo2['a'])}" target="main">{$vo2.name}</a></dd>
+					 {/volist}
+				  </dl>
+			  {/if}
+			</li>
+          {/volist}
+      </ul>
+    </div>
+  </div>
