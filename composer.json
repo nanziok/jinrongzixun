@@ -32,7 +32,7 @@
         }
     },
     "extra": {
-        "think-path": "thinkphp"
+        "think-path": "core"
     },
     "config": {
         "preferred-install": "dist"
