@@ -26,6 +26,7 @@ class Xitong extends Base
     public function index(){
         $this->common();
 		$data=Db::name("xitong")->where("id=1")->find();
+		$data["jijin_setting"] = json_decode($data["jijin_setting"], true);
         $this->assign("data",$data);
 	    return view('index');
     }
@@ -46,8 +47,9 @@ class Xitong extends Base
 		}else{
 		  $data['reg'] = 2;
 		}
+		$this->editJijinSet($data);
 
-		$do=Db::name("xitong")->update($data);
+            $do=Db::name("xitong")->update($data);
 		if($do){
 			$this->success("修改成功！");
 		}else{
@@ -557,6 +559,38 @@ class Xitong extends Base
 	   }
 	
 	 }
-	} 
+	}
+
+	private function editJijinSet(&$data){
+        $temp_array = [];
+        $temp_array["jijin_switch"] = $data["jijin_switch"];
+        $temp_array["jijin_fee_percent"] = $data["jijin_fee_percent"];
+        $temp_array["jijin_fee_ladder1"] = $data["jijin_fee_ladder1"];
+        $temp_array["jijin_fee_ladder2"] = $data["jijin_fee_ladder2"];
+        $temp_array["jijin_fee_ladder3"] = $data["jijin_fee_ladder3"];
+        $temp_array["jijin_fee_ladder4"] = $data["jijin_fee_ladder4"];
+        $temp_array["jijin_fee_ladder5"] = $data["jijin_fee_ladder5"];
+        $temp_array["jijin_fee_ladder6"] = $data["jijin_fee_ladder6"];
+        unset($data["jijin_switch"], $data["jijin_fee_percent"], $data["jijin_fee_ladder1"], $data["jijin_fee_ladder2"], $data["jijin_fee_ladder3"], $data["jijin_fee_ladder4"], $data["jijin_fee_ladder5"], $data["jijin_fee_ladder6"]);
+        //校验数据正确性
+        if($temp_array["jijin_switch"] == 'ladder'){
+            $this->error("基金计费类型有误");
+        }else if($temp_array["jijin_switch"] == 'percent'){
+            if(empty($temp_array["jijin_fee_percent"])){
+                $this->error("基金收费比例不能为空");
+            }
+            if(!is_numeric($temp_array["jijin_fee_percent"])){
+                $temp_array["jijin_fee_percent"] = str_replace("%","",$temp_array["jijin_fee_percent"]);
+                if(!is_numeric($temp_array["jijin_fee_percent"])){
+                    $this->error("基金收费比例不能包含除%之外的特殊字符");
+                }
+            }
+        }else{
+            if(!is_numeric($temp_array["jijin_fee_ladder1"]) || !is_numeric($temp_array["jijin_fee_ladder2"]) || !is_numeric($temp_array["jijin_fee_ladder3"]) || !is_numeric($temp_array["jijin_fee_ladder4"]) || !is_numeric($temp_array["jijin_fee_ladder5"]) || !is_numeric($temp_array["jijin_fee_ladder6"])){
+                $this->error("阶梯收费标准写错错误");
+            }
+        }
+        $data["jijin_setting"] = json_encode($temp_array);
+    }
 	  
 }

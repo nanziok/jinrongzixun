@@ -27,6 +27,8 @@
 		<li class="layui-this">网站设置</li>
 		<li>版本设置</li>
 		<li>短信设置</li>
+		<li>微信设置</li>
+		<li>基金咨询设置</li>
 	  </ul>
 	  <div class="layui-tab-content" style="height: 100px;">
 		<div class="layui-tab-item layui-show">
@@ -129,6 +131,91 @@
 			    </div>
 			 </div>
 		</div>
+		<div class="layui-tab-item">
+		  <div class="layui-form-item">
+			  <label class="layui-form-label">微信小程序APPID：</label>
+			  <div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
+				  <input type="text" name="wechat_mp_appid" value="{$data.wechat_mp_appid}" placeholder="请输入微信小程序APPID" class="layui-input">
+			  </div>
+		  </div>
+		  <div class="layui-form-item">
+			  <label class="layui-form-label">微信小程序SECRET：</label>
+			  <div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
+				  <input type="text" name="wechat_mp_secret" value="{$data.wechat_mp_secret}" placeholder="请输入微信小程序APPSECRET" class="layui-input">
+			  </div>
+		  </div>
+		  <div class="layui-form-item">
+			<label class="layui-form-label">微信支付APPID：</label>
+			<div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
+				<input type="text" name="wechat_pay_appid" value="{$data.wechat_pay_appid}" placeholder="请输入微信支付商户号" class="layui-input">
+			</div>
+		  </div>
+		  <div class="layui-form-item">
+			<label class="layui-form-label">微信支付商户号：</label>
+			<div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
+				<input type="text" name="wechat_pay_merchant" value="{$data.wechat_pay_merchant}" placeholder="请输入微信支付商户号" class="layui-input">
+			</div>
+		  </div>
+		  <div class="layui-form-item">
+			<label class="layui-form-label">微信支密钥：</label>
+			<div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
+				<input type="text" name="wechat_pay_key" value="{$data.wechat_pay_key}" placeholder="请输入微信支付密钥" class="layui-input">
+			</div>
+		 </div>
+		</div>
+		<div class="layui-tab-item">
+			<div class="layui-form-item">
+				<label class="layui-form-label">基金服务价格标准：</label>
+				<div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
+					<select name="jijin_switch" lay-filter="jijin_switch">
+						<option value="percent" {if $data.jijin_setting.jijin_switch eq 'perent'}selected{/if}>百分比</option>
+						<option value="ladder" {if $data.jijin_setting.jijin_switch eq 'ladder'}selected{/if}>阶梯收费</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-form-item for-percent {if $data.jijin_setting.jijin_switch eq 'ladder'}layui-hide{/if}">
+				<label class="layui-form-label">基金收费比例：</label>
+				<div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
+					<input type="text" name="jijin_fee_percent" value="{$data.jijin_setting.jijin_fee_percent}" placeholder="请输入仅仅收费比例" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item for-ladder {if $data.jijin_setting.jijin_switch eq 'percent'}layui-hide{/if}">
+				<label class="layui-form-label">阶梯[0-1W]：</label>
+				<div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
+					<input type="number" name="jijin_fee_ladder1" value="{$data.jijin_setting.jijin_fee_ladder1}" placeholder="请输入阶梯收费标准" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item for-ladder {if $data.jijin_setting.jijin_switch eq 'percent'}layui-hide{/if}">
+				<label class="layui-form-label">阶梯[1W-3W]：</label>
+				<div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
+					<input type="number" name="jijin_fee_ladder2" value="{$data.jijin_setting.jijin_fee_ladder2}" placeholder="请输入阶梯收费标准" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item for-ladder {if $data.jijin_setting.jijin_switch eq 'percent'}layui-hide{/if}">
+				<label class="layui-form-label">阶梯[3W-5W]：</label>
+				<div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
+					<input type="number" name="jijin_fee_ladder3" value="{$data.jijin_setting.jijin_fee_ladder3}" placeholder="请输入阶梯收费标准" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item for-ladder {if $data.jijin_setting.jijin_switch eq 'percent'}layui-hide{/if}">
+				<label class="layui-form-label">阶梯[5W-10W]：</label>
+				<div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
+					<input type="number" name="jijin_fee_ladder4" value="{$data.jijin_setting.jijin_fee_ladder4}" placeholder="请输入阶梯收费标准" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item for-ladder {if $data.jijin_setting.jijin_switch eq 'percent'}layui-hide{/if}">
+				<label class="layui-form-label">阶梯[10W-20W]：</label>
+				<div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
+					<input type="number" name="jijin_fee_ladder5" value="{$data.jijin_setting.jijin_fee_ladder5}" placeholder="请输入阶梯收费标准" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item for-ladder {if $data.jijin_setting.jijin_switch eq 'percent'}layui-hide{/if}">
+				<label class="layui-form-label">阶梯[20W-50W]：</label>
+				<div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
+					<input type="number" name="jijin_fee_ladder6" value="{$data.jijin_setting.jijin_fee_ladder6}" placeholder="请输入阶梯收费标准" class="layui-input">
+				</div>
+			</div>
+		</div>
 	  </div>
 	</div> 
     <div class="layui-form-item" style="padding-top:30px;">
@@ -166,6 +253,16 @@ layui.use(['element','form'], function(){
 			}
 		});
 	})
+	form.on('select(jijin_switch)',function (data){
+		console.log("出发更改");
+		if(data.value == 'percent'){
+			$('.for-percent').removeClass("layui-hide");
+			$('.for-ladder').addClass("layui-hide");
+		}else if(data.value == 'ladder'){
+			$('.for-percent').addClass("layui-hide");
+			$('.for-ladder').removeClass("layui-hide");
+		}
+	});
 
 
 

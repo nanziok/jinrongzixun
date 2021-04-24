@@ -16,11 +16,11 @@ return [
      'hostname' => 'localhost',
      
     // 数据库名
-    'database' => 'app_com',
+    'database' => 'jinrongch',
     // 用户名
-	'username' => 'app_com',
+	'username' => 'root',
     // 密码
-     'password' => '2xfeHhzrXysArsS4',     
+     'password' => '123456',
     // 端口
     'hostport' => '3306',
     // 连接dsn

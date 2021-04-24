@@ -1,9 +1,9 @@
-document.onkeydown = function(e){
-        var ev = document.all ? window.event : e;
-        if(ev.keyCode==13) {
-           return false;
-        }
- }
+// document.onkeydown = function(e){
+//         var ev = document.all ? window.event : e;
+//         if(ev.keyCode==13) {
+//            return false;
+//         }
+//  }
 //设置数据
 function set_data(data){
       $.ajax({
@@ -158,7 +158,7 @@ function reload(){
 function clear_cache(){
 	  var tc = layer.load(0, {shade: [0.3,'#fff'],shadeClose : false});
 	  $.ajax({
-            url: '/admin/xitong/wdl_clear_cache',
+            url: '/manage.php/xitong/wdl_clear_cache',
             success: function (txt) {
             	layer.msg(txt.msg);
                 layer.close(tc);

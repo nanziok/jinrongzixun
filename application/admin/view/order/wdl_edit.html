@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+{load href="/static/manage/css/style.css" /}
+{load href="/static/manage/js/jquery-1.8.1.min.js" /}
+{load href="/static/manage/layui/css/layui.css" /}
+{load href="/static/manage/layui/layui.js" /}
+{load href="/static/manage/js/public.js" /}
+{load href="/static/manage/js/jquery.form.js" /}
+
+<style>
+    .layui-form{margin: 0 auto;width: 90%;margin-top: 10px;}
+    .layui-input-block{width:50%;}
+    .layui-form-label {
+        white-space: nowrap;
+        word-break: keep-all;
+    }
+</style>
+<form class="layui-form" action="{:url('wdl_cat_add_do')}" id="form" >
+    <input name="id" type="hidden" value="{$row.id}" />
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md6">
+            <label class="layui-form-label">订单编号</label>
+            <div class="layui-input-block"><span class="require-field">*</span>
+                <input type="text" name="order_no" placeholder="订单编号" class="layui-input must" value="{$row.order_no}">
+            </div>
+        </div>
+        <div class="layui-col-md6">
+            <label class="layui-form-label">下单人</label>
+            <div class="layui-input-block"><span class="require-field">*</span>
+                <input type="text" name="user_text" placeholder="下单人" class="layui-input must" value="{$row.user_text}">
+            </div>
+        </div>
+    </div>
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md6">
+            <label class="layui-form-label">咨询师</label>
+            <div class="layui-input-block"><span class="require-field">*</span>
+                <input type="text" name="service_text" placeholder="咨询师" class="layui-input must" value="{$row.service_text}">
+            </div>
+        </div>
+        <div class="layui-col-md6">
+            <label class="layui-form-label">订单总价</label>
+            <div class="layui-input-block"><span class="require-field">*</span>
+                <input type="price" name="service_text" placeholder="咨询师" class="layui-input must" value="{$row.price}">
+            </div>
+
+        </div>
+    </div>
+    <div class="layui-row layui-col-space10">
+    <div class="layui-col-md6">
+        <label class="layui-form-label">应付款</label>
+        <div class="layui-input-block"><span class="require-field">*</span>
+            <input type="text" name="c_amount" placeholder="应付款" class="layui-input must" value="{$row.c_amount}">
+        </div>
+    </div>
+    <div class="layui-col-md6">
+        <label class="layui-form-label">实付款</label>
+        <div class="layui-input-block"><span class="require-field">*</span>
+            <input type="text" name="t_amount" placeholder="实付款" class="layui-input must" value="{$row.t_amount}">
+        </div>
+    </div>
+    </div>
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md6">
+            <label class="layui-form-label">支付平台单号</label>
+            <div class="layui-input-block"><span class="require-field">*</span>
+                <input type="text" name="payment_code" placeholder="支付平台单号" class="layui-input must" value="{$row.payment_code}">
+            </div>
+        </div>
+        <div class="layui-col-md6">
+            <label class="layui-form-label">支付方式</label>
+            <div class="layui-input-block"><span class="require-field">*</span>
+                <input type="t_amount" name="pay_type_text" placeholder="实付款" class="layui-input must" value="{$row.pay_type_text}">
+            </div>
+        </div>
+
+    </div>
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md6">
+            <label class="layui-form-label">支付时间</label>
+            <div class="layui-input-block">
+                <input name="pay_time" type="text" class="layui-input" value="{$row.pay_time}">
+            </div>
+        </div>
+        <div class="layui-col-md6">
+            <label class="layui-form-label">订单状态</label>
+            <div class="layui-input-block">
+                <select name="status">
+                    {volist name="status_list" id="vo" key="key"}
+                    <option value="{$key}">{$vo}</option>
+                    {/volist}
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md6">
+            <label class="layui-form-label">下单时间</label>
+            <div class="layui-input-block">
+                <input name="create_time" placeholder="下单时间" class="layui-input" value="{$row.create_time}"/>
+            </div>
+        </div>
+        <div class="layui-col-md6">
+            <label class="layui-form-label">更新时间</label>
+            <div class="layui-input-block">
+                <input name="update_time" placeholder="更新时间" class="layui-input" value="{$row.update_time}"/>
+            </div>
+        </div>
+    </div>
+    <div class="layui-form-item" style="margin-top: 10px;">
+        <div class="layui-input-block">
+            <button type="button" class="layui-btn" id="form_btn">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-normal">重置</button>
+        </div>
+    </div>
+
+</form>
+<script>
+    layui.use('form', function(){
+        var form = layui.form;
+        submit_form();
+    })
+</script>
+</body>
+</html>

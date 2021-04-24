@@ -1,6 +1,7 @@
 <?php
 namespace app\admin\controller;
 use think\Db;
+use fast\Tree;
 class Article extends Base {
 	//文章管理start--------------------------------------------------------------------------------------------------------------------------------------
 	// 文章列表
@@ -34,7 +35,10 @@ class Article extends Base {
     }
 	// 添加文章
 	public function wdl_add(){
-		$cat_list = Db::name("article_cat")->field('id,name')->select();
+        $cat_list = Db::name("article_cat")->field('id,name,pid')->select();
+        $tree = Tree::instance();
+        $tree->init(collection($cat_list)->toArray(), 'pid');
+        $cat_list = $tree->getTreeList($tree->getTreeArray(0), 'name');
 		$this -> assign("cat_list",$cat_list);
 		return view();
 	}
@@ -67,7 +71,10 @@ class Article extends Base {
 		$data = Db::name("article")->where('id',$id)->find();
 		$this -> assign("data",$data);
 	
-		$cat_list = Db::name("article_cat")->field('id,name')->select();
+		$cat_list = Db::name("article_cat")->field('id,name,pid')->select();
+		$tree = Tree::instance();
+        $tree->init(collection($cat_list)->toArray(), 'pid');
+        $cat_list = $tree->getTreeList($tree->getTreeArray(0), 'name');
 		$this -> assign("cat_list",$cat_list);
 		return view();
 	}
@@ -82,12 +89,12 @@ class Article extends Base {
 		}
 		$where['title'] = ['eq',$data['title']];
 		$where['id'] = ['neq',$data['id']];
-		$find = Db::name("article")->where($where)->find();
+		$find = Db::name("article")->where($where)->where("id","neq",$data["id"])->find();
 		if($find){
 			$this->error('文章标题'.$data['title'].'已经存在');
 		}
 		$do=Db::name("article")->update($data);	
-		if($do){
+		if($do !== false){
 			$this->success("编辑成功");
 		}else{
 			$this->error('没有修改');
@@ -116,6 +123,12 @@ class Article extends Base {
 	//获取分类列表
 	public function wdl_cat(){
 		$data = Db::name('article_cat')->order('id desc')->select();
+        $tree = Tree::instance();
+        $tree->init(collection($data)->toArray(), 'pid');
+        $data = $tree->getTreeList($tree->getTreeArray(0), 'name');
+//        foreach ($data as &$item) {
+//                $item = str_replace('&nbsp;', ' ', $item);
+//        }
 		if($data){
 		    foreach($data as $k=>$v){
 			    $data[$k]['count'] =  Db::name('article')->where('cat_id',$v['id'])->count();
@@ -126,6 +139,11 @@ class Article extends Base {
 	}
 	//分类添加
 	public function wdl_cat_add(){
+        $data = Db::name('article_cat')->order('id desc')->select();
+        $tree = Tree::instance();
+        $tree->init(collection($data)->toArray(), 'pid');
+        $data = $tree->getTreeList($tree->getTreeArray(0), 'name');
+        $this->assign("cat_list",$data);
 		return view('cat_add');
 	}
 	//分类添加处理
@@ -148,6 +166,11 @@ class Article extends Base {
 		$id = input("id");
 		$data =  Db::name('article_cat')->where("id",$id)->find();
 		$this->assign('data',$data);
+        $data = Db::name('article_cat')->order('id desc')->select();
+        $tree = Tree::instance();
+        $tree->init(collection($data)->toArray(), 'pid');
+        $data = $tree->getTreeList($tree->getTreeArray(0), 'name');
+        $this->assign("cat_list",$data);
 		return view('cat_edit');
 	}
 	//分类编辑处理
