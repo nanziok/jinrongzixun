@@ -12,6 +12,7 @@ return [
         'app\api\controller\Index',
         'app\api\controller\User',
         'app\api\controller\Login',
+        'app\api\controller\Demo',
     ],
     'filter_method' => [
         //过滤 不解析的方法名称
@@ -19,7 +20,7 @@ return [
     ],
     'return_format' => [
         //数据格式
-        'code' => "200/300/301/302",
+        'code' => "0/1",
         'msg' => "提示信息",
     ],
     'public_header' => [

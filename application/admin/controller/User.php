@@ -2,6 +2,8 @@
 namespace app\admin\controller;
 use think\Db;
 use think\Exception;
+use think\Queue;
+
 class user extends Base
 {
 
@@ -9,23 +11,11 @@ class user extends Base
 	//会员管理start-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //会员列表
     public function index(){
-		$age = [['id'=>1,"name"=>'0~8岁'],['id'=>2,"name"=>'9~10岁'],['id'=>3,"name"=>'11~12岁'],['id'=>4,"name"=>'13~16岁'],['id'=>5,'name'=>'17~18岁'],['id'=>6,'name'=>'18岁以上']];
-     	$shili = [['id'=>1,"name"=>'近视'],['id'=>2,"name"=>'远视'],['id'=>3,"name"=>'弱视'],['id'=>4,"name"=>'散光'],['id'=>5,"name"=>'其他']];
-     	$tiaoli = [['id'=>1,"name"=>'阶段一'],['id'=>2,"name"=>'阶段二'],['id'=>3,"name"=>'阶段三'],['id'=>4,"name"=>'阶段四']];
-		$this->assign('age',$age);
-		$this->assign('shili',$shili);
-		$this->assign('tiaoli',$tiaoli);
 		return view('index');
     }
 	//获取会员列表
     public function wdl_index(){
-    	$tiaoli = ['未设置','阶段一','阶段二','阶段三','阶段四'];
-    	$shili = ['未设置','近视','远视','弱视','散光','其他'];
 		$where=[];
-		$user_rank=input("user_rank");
-		if($user_rank){
-			$where['user_rank']=$user_rank;
-		}
 		$phone=input("phone");
 		if ($phone) {
             $where['phone'] = ['like', '%' . $phone . '%'];
@@ -41,45 +31,18 @@ class user extends Base
 		if($start_date && $end_date){
 		  $where['add_time'] = ['between',[strtotime($start_date),strtotime($end_date)]];
 		}
-        $age = input('age',0,'intval');
-        if($age>0){
-        	 if($age == 1){
-		        	$where['age'] = ['between',[0,8]];
-		        }elseif($age == 2){
-		        	$where['age'] = ['between',[9,10]];
-		        }elseif($age == 3){
-		        	$where['age'] = ['between',[11,12]];
-		        }elseif($age == 4){
-		        	$where['age'] = ['between',[13,16]];
-		        }elseif($age == 5){
-		        	$where['age'] = ['between',[17,18]];
-		        }else{
-		        	$where['age'] = ['gt',18];
-		        }
-        }
-        $shili_a = input('shili',0,'intval');
-        $tiaoli_a = input('tiaoli',0,'intval');
-        if($shili_a>0){
-            $where['shili'] = ['eq',$shili_a];
-        }
-        if($tiaoli_a>0){
-        	$where['tiaoli'] = ['eq',$tiaoli_a];
-        }
+
 	    $count = Db::name('user')->where($where)->count();
 		$list =  Db::name('user')->where($where)->order("id desc")->paginate(20,false,['query'=>input()]);
 		$data = $list->items();
 		if($data){
 			foreach($data as $k=>$v){
 			   $data[$k]['headimg'] = get_headimg($v['id']);
-			   $data[$k]['sex']= get_sex($v['sex']);
+			   $data[$k]['sex'] = get_sex($v['sex']);
 			   $data[$k]['username'] = empty($v['username'])?'--':$v['username'];
 			   $data[$k]['add_time'] = d($v['add_time']);
 			   $data[$k]['realname'] = empty($v['realname'])?'--':$v['realname'];
-			   $data[$k]['shili'] = $shili[$v['shili']];
-               $data[$k]['tiaoli'] = $tiaoli[$v['tiaoli']];
-               $data[$k]['desc'] = '学校['.$v['school'].']-班级['.$v['banji'].']-简介['.$v['desc'].']-地区['.get_region_info($v['province']).get_region_info($v['city']).get_region_info($v['district']).']';
-		       $data[$k]['shuju'] = '发布数<b class="red">['.$v['fabu'].'</b>-关注数<b class="red">['.$v['guanzhu'].']</b>-粉丝数<b class="red">['.$v['fensi'].']</b>-点赞数<b class="red">['.$v['zan'].']</b>-获赞数<b class="red">['.$v['get_zan'].']</b>';
-		   } 
+		   }
 		}
 		echo json_encode(array("code"=>0,'data'=>$data,'message'=>'成功','count'=>$count));
     }
@@ -162,200 +125,122 @@ class user extends Base
 		}
 
 	}
-	
+
     //会员管理end--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	//会员发布管理start-------------------------------------------------------------------------------------------------------------------------------------
-	//会员发布列表
-	public function fabu(){
-		return view();
-	}
-	//获取会员发布列表
-	public function wdl_fabu(){
-		$start_date = input("start_date");
-		$end_date = input("end_date");
-        if($start_date){
-		  $where['f.add_time'] = ['gt',strtotime($start_date)];
-		}
-		if($end_date){
-		  $where['f.add_time'] = ['between',[1,strtotime($end_date)]];
-		}
-		if($start_date && $end_date){
-		  $where['f.add_time'] = ['between',[strtotime($start_date),strtotime($end_date)]];
-		}
-		$type = input("type",0,"intval");
-		$status = input("status",0,"intval");
-		if($type){
-			$where['f.type'] = ['eq',$type];
-		}
-		if($status){
-			$where['f.status'] = ['eq',$status];
-		}
-		$where['is_delete'] = ['eq',0];
-	    $count = Db::name('user_fabu')->alias("f")->join("user u","u.id=f.user_id","left")->where($where)->field("f.*,u.phone,u.username")->count();
-		$list =  Db::name('user_fabu')->alias("f")->join("user u","u.id=f.user_id","left")->where($where)->field("f.*,u.phone,u.username")->order("f.id desc")->paginate(10,false,['query'=>input()]);
-		$data = $list->items();
-		if($data){
-			foreach($data as $k=>$v){
-			   $data[$k]['username'] = empty($v['username'])?'--':$v['username'];
-			   $data[$k]['type_desc'] = $v['type'] == 1?"图片":($v["type"]==2?"视频":"纯文本");
-			   $data[$k]['add_time'] = d($v['add_time']);
-			   if($v['type'] == 1){
-			   	 $data[$k]['type_value'] = explode(',',$v['type_value']);
-			   }
-		   } 
-		}
-		echo json_encode(array("code"=>0,'data'=>$data,'message'=>'成功','count'=>$count));
-    
-	}
 
-	//会员发布删除
-	public function wdl_fabu_del(){
-		  $id = input("id",0,"intval");
-		  $info =  Db::name("user_fabu")->where(array("id"=>$id))->find();
-		  if(!$info){
-		  	$this->error('信息有误');
-		  }
-		  Db::startTrans();
-            try{
-            	    $result1 = Db::name("user_fabu")->where(array("id"=>$id))->delete();
-            	    $result2 = true;
-            	    if($info['zan']>0){
-            	    	$result2 = Db::name("user")->where("id",$info['user_id'])->setDec('get_zan',$info['zan']);
-            	    }
-	          	    $result3 = true;
-	          	    $result6 = true;
-	          	    $str_arr = Db::name("user_zan")->where(array("fabu_id"=>$id))->column("user_id");
-	          	    if(count($str_arr)>0){
-	          	    	$result3 = Db::name("user_zan")->where(array("fabu_id"=>$id))->delete();
-	          	    	$result6 = Db::name("user")->where(array("id"=>['in',implode(",",$str_arr)]))->setDec('zan');
-	          	    }
-	          	    $result7 = true;
-	          	    $comment_arr = Db::name("user_fabu_comment")->where(array("fabu_id"=>$id))->count();
-	          	    if($comment_arr>0){
-	          	    	$result7 = Db::name("user_fabu_comment")->where(array("fabu_id"=>$id))->delete();
-	          	    }
-		        	 if($result1 && $result2 && $result3 && $result6 && $result7){
-		        	 	Db::commit();
-		        	 }else{
-		            	throw new Exception('删除失败,请稍后重试');
-		        	 }
+    /**
+     * 赠券
+     * @return \think\response\View
+     */
+    public function wdl_add_coupon(){
+        if(request()->isPost()){
+            $data = input("post.");
+            $data["create_time"] = time();
+            $data["status"] = 1;
+            $data["end_time"] = strtotime($data["end_time"]);
+            if($data["type"] == 1 && $data["rule"]<$data["fee"]){
+                $this->error("设置满减活动的满减条件不能小于满减金额");
+            }
+            $ret = Db::name("user_coupon")->strict(false)->insert($data);
+            if($ret === false){
+                $this->error("添加失败");
+            }
+            $params = [
+                "user_id" => $data["user_id"]
+            ];
+            Queue::push("app\job\User@endGiveCoupon", $params);
+            $delay = autocomplete -  $data["create_time"] - 7*24*60*60;
+            if($delay>0){
+                Queue::later($delay, "app\job\User@couponTimeout", $params);
+            }
+            $this->success("添加成功");
+        }else {
+            $user_id = input("id", 0,"int");
+            $user_text = Db::name("user")->where("id",$user_id)->value("phone");
+            $this->assign("user_text", $user_text);
+            $this->assign("type_list", $this->couponTypesList());
+            return view('give_coupon');
+        }
+    }
 
-          	} catch (\Exception $e) {
-		    // 回滚事务
-			    Db::rollback();
-				$message= $e -> getMessage();
-				$this->error($message);
-		    } 
+    /**
+     * 用户券列表
+     */
+    public function couponList(){
+        $coupon_status_list = $this->couponStatusList();
+        $coupon_type_list = $this->couponTypesList();
+
+        if (request()->isPost()) {
+            //筛选条件
+            $map = [];
+            $name = input("name", "");
+            $status = input("status", 0, "int");
+            $type = input("type", 0, "int");
+            if (!empty($name)) {
+                $condition = [];
+                $condition["username|phone|nickname"] = ["like", "%$name%"];
+                $user_ids = Db::name("user")->where($condition)->column("id");
+                $map["c.user_id"] = ["in", $user_ids];
+            }
+            if (in_array($status, [1, 2, 3])) {
+                $map["c.status"] = ["eq", $status];
+            }
+            if (in_array($type, [1, 2])) {
+                $map["c.type"] = ["eq", $type];
+            }
+//            dump($map);
+            $count = Db::name("user_coupon")->alias("c")->where($map)->count();
+            $list = Db::name("user_coupon")->alias("c")
+                ->join("ke_user u", "u.id=c.user_id", "left")
+                ->field("c.*,u.phone as user_text")
+                ->where($map)
+                ->order("id")
+                ->paginate(10, false, ["query" => input()]);
+            $data = $list->items();
+
+            $data = array_map(function ($item) use ($coupon_status_list, $coupon_type_list) {
+                $item["create_time"] = d($item["create_time"]);
+                $item["end_time"] = d($item["end_time"]);
+                $item["status_text"] = $coupon_status_list[$item["status"]];
+                $item["type_text"] = $coupon_type_list[$item["type"]];
+                return $item;
+            }, $data);
+            echo json_encode(array("code"=>0,'data'=>$data,'message'=>'成功','count'=>$count));
+        }else{
+            $this->assign("status_list", $coupon_status_list);
+            $this->assign("type_list", $coupon_type_list);
+            return view("user_coupon");
+        }
+    }
+
+    /**
+     * 删除一张用户优惠券
+     */
+    public function wdl_del_coupon(){
+        $id = input("id",0,"int");
+        $ret = Db::name("user_coupon")->where("id",$id)->delete();
+        if($ret !== false){
             $this->success("删除成功");
-	}
-	
-	//会员发布删除列表
-	public function fabu_del_list(){
-		return view();
-	}
-	//获取会员发布删除列表
-	public function wdl_fabu_del_list(){
-		$start_date = input("start_date");
-		$end_date = input("end_date");
-        if($start_date){
-		  $where['f.add_time'] = ['gt',strtotime($start_date)];
-		}
-		if($end_date){
-		  $where['f.add_time'] = ['between',[1,strtotime($end_date)]];
-		}
-		if($start_date && $end_date){
-		  $where['f.add_time'] = ['between',[strtotime($start_date),strtotime($end_date)]];
-		}
-		$type = input("type",0,"intval");
-		$status = input("status",0,"intval");
-		if($type){
-			$where['f.type'] = ['eq',$type];
-		}
-		if($status){
-			$where['f.status'] = ['eq',$status];
-		}
-		$where['is_delete'] = ['eq',1];
-	    $count = Db::name('user_fabu')->alias("f")->join("user u","u.id=f.user_id","left")->where($where)->field("f.*,u.phone,u.username")->count();
-		$list =  Db::name('user_fabu')->alias("f")->join("user u","u.id=f.user_id","left")->where($where)->field("f.*,u.phone,u.username")->order("f.id desc")->paginate(10,false,['query'=>input()]);
-		$data = $list->items();
-		if($data){
-			foreach($data as $k=>$v){
-			   $data[$k]['username'] = empty($v['username'])?'--':$v['username'];
-			   $data[$k]['type_desc'] = $v['type'] == 1?"图片":($v["type"]==2?"视频":"纯文本");
-			   $data[$k]['add_time'] = d($v['add_time']);
-			   if($v['type'] == 1){
-			   	 $data[$k]['type_value'] = explode(',',$v['type_value']);
-			   }
-		   } 
-		}
-		echo json_encode(array("code"=>0,'data'=>$data,'message'=>'成功','count'=>$count));
-    
-	}
-	//会员发布管理end-------------------------------------------------------------------------------------------------------------------------------------
-	//会员发布内容评价start-------------------------------------------------------------------------------------------------------------------------------------
-    //获取会员发布内容评价列表
-   public function wdl_fabu_comment(){
-   	 $id = input('id');
-   	 $this->assign('id',$id);
-   	 
-   	 return view();
-   }
-    //获取会员发布内容评价列表
-	public function wdl_fabu_comment_list(){
-		$id = input('id');
-		$where['c.pid'] = ['eq',0];
-		$where['c.fabu_id'] = ['eq',$id];
-	    $count = Db::name('user_fabu_comment')->alias("c")->join("user u","u.id=c.user_id","left")->where($where)->field("c.id,c.content,c.add_time,u.phone,u.username")->count();
-		$list =  Db::name('user_fabu_comment')->alias("c")->join("user u","u.id=c.user_id","left")->where($where)->field("c.id,c.content,c.add_time,u.phone,u.username")->order("c.id desc")->paginate(20,false,['query'=>input()]);
-		$data = $list->items();
-		if($data){
-			foreach($data as $k=>$v){
-			   $data[$k]['username'] = empty($v['username'])?'--':$v['username'];
-			   $data[$k]['add_time'] = d($v['add_time']);
-			   $reply = Db::name('user_fabu_comment')->where('pid',$v['id'])->column('content');
-			   if(count($reply)>0){
-			   	$data[$k]['reply'] = '<b class="red">回复：</b>'.implode('；',$reply); 
-			   }else{
-			   	$data[$k]['reply'] = '--';
-			   }
-		   } 
-		}
-		echo json_encode(array("code"=>0,'data'=>$data,'message'=>'成功','count'=>$count));
-	}
-	
-	
-		//会员发布删除
-	 public function wdl_fabu_comment_del(){
-		  $id = input("id",0,"intval");
-		  $info =  Db::name("user_fabu_comment")->where(array("id"=>$id))->find();
-		  if(!$info){
-		  	$this->error('信息有误');
-		  }
-		  Db::startTrans();
-          try{
-            	    $result1 = Db::name("user_fabu_comment")->where(array("id"=>$id))->delete();
-            	    $count = Db::name("user_fabu_comment")->where(array("pid"=>$id))->count();
-            	    $result2 = true;
-            	    if($count>0){
-            	    	$result2 = Db::name("user_fabu_comment")->where(array("pid"=>$id))->delete();
-            	    }
-            	    $new_comment = $count+1;
-	          	    $result3 = Db::name("user_fabu")->where(array("id"=>$info['fabu_id']))->setDec('comment',$new_comment);
-		        	 if($result1 && $result2 && $result3){
-		        	 	Db::commit();
-		        	 }else{
-		            	throw new Exception('删除失败,请稍后重试');
-		        	 }
+        }else{
+            $this->error("删除失败");
+        }
+    }
 
-          	} catch (\Exception $e) {
-		    // 回滚事务
-			    Db::rollback();
-				$message= $e -> getMessage();
-				$this->error($message);
-		    } 
-            $this->success("删除成功");
-	}
-	//会员发布内容评价end-------------------------------------------------------------------------------------------------------------------------------------
+    private function couponStatusList(){
+        return [
+            "1" => "未使用",
+            "2" => "已使用",
+            "3" => "已过期",
+        ];
+    }
+
+    private function couponTypesList(){
+        return [
+            "1" => "满减券",
+            "2" => "无条件优惠券",
+        ];
+    }
+
 
 }
 

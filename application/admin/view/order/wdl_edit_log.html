@@ -57,14 +57,24 @@
             <textarea class="layui-textarea" name="notes" id="log_notes"></textarea>
         </div>
         <script type="text/html" id="test_log_content_tpl">
+            {{#
+            var isChecked=function(item,list){
+                return list.includes(String(item)) ? "checked" : "";
+            }
+            }}
             <div class="layui-form-item">
                 <div class="layui-input-block">
             {{#  var temp_data=[], temp_key;  }}
-            {{#  console.log("选项格式化之前",d.tinei.split(/\\n/));temp_data=d.tinei.split(/[\n|(\r\n)]/);temp_key=d.answer?d.answer.split(","):[];console.log("选项",temp_data);  }}
+            {{#  temp_data=d.tinei;  }}
             {{#  if(d.type == 'radio'){  }}
             <p class="test-item">{{d.timu}}【单选题】</p>
             {{#  $.each(temp_data, function(index,item){  }}
-            <input class="layui-input" type="radio" value="{{index}}" title="{{item}}" />
+            <input class="layui-input" type="radio" value="{{index}}" title="{{item}}" {{isChecked(index,d.answer)}} />
+            {{#  });  }}
+            {{#  }else if(d.type == 'checkbox'){  }}
+            <p class="test-item">{{d.timu}}【多选题】</p>
+            {{#  $.each(temp_data, function(index,item){  }}
+            <input class="layui-input" type="checkbox" value="{{index}}" title="{{item}}" lay-skin="primary" {{isChecked(index,d.answer)}} />
             {{#  });  }}
             {{#  }  }}
                 </div>
@@ -72,7 +82,7 @@
         </script>
     </div>
 
-    <div class="layui-form-item" style="margin-top: 10px;">
+    <div class="layui-form-item" style="margin-top: 20px;margin-left: 50%;">
         <div class="layui-input-block">
             <button type="button" class="layui-btn" id="form_btn">立即提交</button>
             <button type="reset" class="layui-btn layui-btn-normal">重置</button>
@@ -85,22 +95,56 @@
         var form = layui.form
         ,layedit=layui.layedit
         ,laytpl=layui.laytpl;
-        submit_form();
+        $("#form_btn").click(function(){
+            var leg = $(".must").length;
+            for(var a=0;a<leg;a++){
+                var val=$(".must").eq(a).val();
+                if(val == "" || val == 0){
+                    var msg = $(".must").eq(a).attr('msg');
+                    if(!msg){
+                        msg = $(".must").eq(a).attr('placeholder');
+                    }
+                    layer.alert(msg,{icon: 2,title:'提示'});
+                    return false;
+                }
+            }
+            layedit.sync(editIndex);
+            $("#form").ajaxSubmit(function(txt){
+                if(txt.code==1){
+                    layer.msg(txt.msg);
+                    setTimeout(function(){
+                        window.parent.editdo();
+                    },500)
+                }else{
+                    layer.alert(txt.msg,{icon: 2,title:'提示'});
+                    return false;
+                }
+            });
+        })
 
         //创建一个编辑器
-        var editIndex = layedit.build('log_notes');
+        var editIndex = layedit.build('log_notes',{
+            height: 400,
+            uploadImage: {
+                url: "{:url('admin/upload/up_for_edit')}",
+                type: 'post'
+            }
+        });
         var test_log_content = {$row.content}, html_=test_log_content_tpl.innerHTML, dom_=$("#log-content-box");
         test_log_content = test_log_content ?? [];
         console.log("数据是", test_log_content);
         layui.each(test_log_content,function (index, item){
+            item.tinei = item.tinei!='' ? item.tinei.split(/[\n|\r\n]/) : [];
+            item.answer = item.answer ? item.answer.split(",") : []
             console.log(11111,item);
             laytpl(html_).render(item,function (html) {
 
                 dom_.append(html);
             })
         });
-    })
+        form.render();
 
+    })
 </script>
 </body>
 </html>

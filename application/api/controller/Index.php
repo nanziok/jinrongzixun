@@ -11,107 +11,18 @@ use think\Cookie;
  * @package app\api\controller
  */
 class Index extends Controller {
-     /**
-      * @title 获取用户协议
-      * @author  开发者
-      * @url get_article_xieyi
-      * @method get
-      */
-     public function get_article_xieyi(){
-     	$this->get_article_detail('2');
-     }
-     /**
-     * @title 获取隐私政策
-     * path: get_article_zhengce
-     * method: get_article_zhengce
-     */ 
-     public function get_article_zhengce(){
-     	$this->get_article_detail('1');
-     }
-     /**
-     * @title 关于我们
-     */
-     public function get_article_about(){
-     	$this->get_article_detail('4');
-     }
-      /**
-     * @title 获取城市列表
-     */
-     public function get_city_list(){
-		$ret['text_desc'] = 'region_id城市ID|region_name城市名称';
-     	$list = Db::name("region")->where("region_type = 2")->field("str")->order("str asc")->group("str")->select();
- 	    if(count($list)>0){
- 	      foreach($list as $k=>$v){
- 	    		$list[$k]['son'] = Db::name("region")->where(array("region_type"=>2,"str"=>$v["str"]))->field("region_id,region_name,str")->select();
- 	      }
-		  $ret['code']=1;
-		  $ret['data']=$list;
-		}else{
-		  $ret['code']=0;
-		}
-		$this->re($ret);
-     }
-     
-     
-     /**
-     * @title  获取首页轮播图
-     * @url /api/index/get_banner
-     * @method get
-     */ 
-     public function get_banner(){
-     	$this->get_guanggao_list(1,3);
-     }
-     /**
-     * @title  获取首页中间图标
-     * @url /api/index/get_banner_center
-     * @method get
-     */ 
-     public function get_banner_center(){
-     	$this->get_guanggao_list(2,5);
-     }
 
-    /**
-     * @title  获取三级地区列表
-     * @url /api/index/area_list
-     * @method get
-     */ 
-    public function area_list(){
-	   $list = Db::name('region')->where(array("region_type"=>1,'parent_id'=>1))->field('region_id, region_name')->select();
-	   $arr = array();
-	   foreach($list as $k=>$v){
-		  	$arr[$k]['value']=$v['region_id'];
-		  	$arr[$k]['text']= $v['region_name'];
-		  	$arr[$k]['children']= get_city($v['region_id']);
-	   }
-        echo json_encode($arr);exit;
-    }
-    /**
-     * @title  获取城市ID
-     * @url /api/index/get_city_id
-     * @method get
-     * @param: name:name type:string require:1 default: other: des:城市名（不带市）
-     */ 
-     public function get_city_id(){
-     	$name = input("name");
-     	$region_id = Db::name("region")->where(array("region_name"=>$name,"region_type"=>2))->value('region_id');
-     	if(empty($region_id)){
-     		$ret['code']=0;
-     		$ret['city_id']=0;
-
-     	}else{
-     		$ret['code']=1;
-     		$ret['city_id']=$region_id;
-
-     	}
-	     $this->re($ret);
-     }
 
     /**
      * @title 首页模板数据
-     * @description 首页模板数据
+     * @description 首页模板数据，首页tip需要适配登录状态
      * @author 开发
      * @url /api/index/indextpl
      * @method get
+     * @return news:首页文章@
+     * @news title:标题 content:内容（富文本） add_time:时间戳（秒）
+     * @return swipers:首页幻灯片@
+     * @swipers title:标题 img:图片地址
      *
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
@@ -125,24 +36,32 @@ class Index extends Controller {
 
     /**
      * @title 资讯列表
-     * @author 开
+     * @author nnnn
+     * @description 需要分页
      * @url /api/index/new_list
      * @method get
+     * @param name:page type:int require:0 default:1 desc:页码
+     * @param name:page_size type:int require:0 default:10 desc:页长度
+     * @return list:资讯列表@
+     * @list title:标题 content:内容（富文本） add_time:时间戳（秒）
      */
     public function new_list(){
         $page_size=input("page_size",10,"int");
         $page=input("page",1,"int");
-        $count = Db::name("article")->where("cat_id",1)->order("listorder desc")->count();
         $list = Db::name("article")->where("cat_id",1)->order("listorder desc")->page($page,$page_size)->select();
         $this->result(compact('count','list'),1,'资讯列表', 'json');
     }
 
     /**
-     * @title 信息通告详情
-     * @description 信息通告详情
+     * @title 资讯信息详情
+     * @description 资讯信息详情
      * @author 开发
      * @url /api/index/article_info
      * @method get
+     * @param name:id type:int require:1 default:0 desc:文章id,不传的时候返回code=0
+     * @return title:标题
+     * @return content:内容（富文本）
+     * @return add_time:时间戳（秒）
      */
     public function article_info(){
         $id = input("id",0,"int");
@@ -159,9 +78,16 @@ class Index extends Controller {
      * @url /api/index/tech_list
      * @method get
      * @author 开发者
+     * @param name:page type:int require:0 default:1 desc:页码
+     * @param name:page_size type:int require:0 default:10 desc:页长度
+     * @return list:金融咨询师列表@
+     * @list id:咨询师id name:名称 tags:标签 image:图片 price:价格
      */
     public function tech_list(){
-
+        $page_size=input("page_size",10,"int");
+        $page=input("page",1,"int");
+        $list = Db::name("service")->field("id,name,tags,image")->where("status",1)->order("weigh desc")->page($page,$page_size)->select();
+        $this->result(compact("list"),1,"金融咨询师列表",'json');
     }
 
     /**
@@ -171,9 +97,18 @@ class Index extends Controller {
      * @method get
      * @author 开发者
      * @param name:id type:int require:1 default: desc:咨询师id
+     * @return name:
+     * @return tags:
+     * @return image:
+     * @return price:
      */
     public function tech_info(){
-
+        $id = input("id",0,"int");
+        if($id>0) {
+            $info = Db::name("service")->where("id", $id)->where("status",1)->field("id,name,tags,content,image,price")->find();
+            $this->result($info,1,"查看金融咨询师详情",'json');
+        }
+        $this->result("",0,'查看金融咨询师详情','json');
     }
 
     /**

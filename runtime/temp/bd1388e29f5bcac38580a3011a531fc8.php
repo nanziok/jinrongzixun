@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:81:"F:\Work space\jinrongzixun\public_html/../application/admin\view\order\index.html";i:1619248029;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:81:"F:\Work space\jinrongzixun\public_html/../application/admin\view\order\index.html";i:1619414167;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +24,8 @@
         &nbsp;&nbsp;状态：<div class="layui-inline">
         <select id="status">
             <option value="0">请选择</option>
-            <?php if(is_array($status_list) || $status_list instanceof \think\Collection || $status_list instanceof \think\Paginator): $key = 0; $__LIST__ = $status_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($key % 2 );++$key;?>
-            <option value="{key}"><?php echo $vo; ?></option>
+            <?php if(is_array($status_list) || $status_list instanceof \think\Collection || $status_list instanceof \think\Paginator): $key1 = 0; $__LIST__ = $status_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($key1 % 2 );++$key1;?>
+            <option value="{key1}"><?php echo $vo; ?></option>
             <?php endforeach; endif; else: echo "" ;endif; ?>
         </select>
     </div>

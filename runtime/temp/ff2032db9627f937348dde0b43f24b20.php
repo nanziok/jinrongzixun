@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"F:\Work space\jinrongzixun\public_html/../application/admin\view\order\wdl_edit.html";i:1619247488;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"F:\Work space\jinrongzixun\public_html/../application/admin\view\order\wdl_edit.html";i:1619511092;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,17 +105,17 @@
         <div class="layui-col-md6">
             <label class="layui-form-label">下单时间</label>
             <div class="layui-input-block">
-                <input name="create_time" placeholder="下单时间" class="layui-input" value="<?php echo $row['create_time']; ?>"/>
+                <input type="text" name="create_time" placeholder="下单时间" class="layui-input" value="<?php echo $row['create_time']; ?>"/>
             </div>
         </div>
         <div class="layui-col-md6">
             <label class="layui-form-label">更新时间</label>
             <div class="layui-input-block">
-                <input name="update_time" placeholder="更新时间" class="layui-input" value="<?php echo $row['update_time']; ?>"/>
+                <input type="text" name="update_time" placeholder="更新时间" class="layui-input" value="<?php echo $row['update_time']; ?>"/>
             </div>
         </div>
     </div>
-    <div class="layui-form-item" style="margin-top: 10px;">
+    <div class="layui-form-item" style="margin-top: 20px;margin-left: 50%;">
         <div class="layui-input-block">
             <button type="button" class="layui-btn" id="form_btn">立即提交</button>
             <button type="reset" class="layui-btn layui-btn-normal">重置</button>

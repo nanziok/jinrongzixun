@@ -182,7 +182,7 @@
         <dd>规格名</dd><dd>价格</dd><dd>市场价</dd><dd>库存</dd><dd>图片</dd><dd>状态</dd><dd></dd>
       </dl>
       {notempty name="$row['sku-data']"}
-      {volist name="$row['sku-data']" id="vo" key="key"}
+      {volist name="$row['sku-data']" id="vo" key="key1"}
       <dl class="sku-data-item">
         <dd><input type="text" class="layui-input" data-name="name" value="{$vo.name}"></dd>
         <dd><input type="text" class="layui-input" data-name="price" value="{$vo.price}"></dd>

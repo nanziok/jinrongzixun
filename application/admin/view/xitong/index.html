@@ -25,12 +25,12 @@
     <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
 	  <ul class="layui-tab-title">
 		<li class="layui-this">网站设置</li>
-		<li>版本设置</li>
 		<li>短信设置</li>
 		<li>微信设置</li>
+		<li>分享设置</li>
 		<li>基金咨询设置</li>
 	  </ul>
-	  <div class="layui-tab-content" style="height: 100px;">
+	  <div class="layui-tab-content" style="min-height: 100px;">
 		<div class="layui-tab-item layui-show">
 		     <div class="layui-form-item">
 			    <label class="layui-form-label">网站名称</label>
@@ -72,44 +72,7 @@
 				</div>
 			  </div>
 		</div>
-		<div class="layui-tab-item">
-		     <div class="layui-form-item">
-			    <label class="layui-form-label">android版本号：</label>
-			    <div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
-			      <input type="text" name="android" value="{$data.android}" placeholder="请输入android版本号" class="layui-input">
-			    </div>
-			 </div>
-			 <div class="layui-form-item">
-			    <label class="layui-form-label">android下载地址：</label>
-			    <div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
-			      <input type="text" name="android_url" value="{$data.android_url}" placeholder="请输入android下载地址" class="layui-input">
-			    </div>
-			 </div>
-			 <div class="layui-form-item">
-			    <label class="layui-form-label">ios版本号：</label>
-			    <div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
-			      <input type="text" name="ios" value="{$data.ios}" placeholder="请输入ios版本号" class="layui-input">
-			    </div>
-			 </div>
-			 <div class="layui-form-item">
-			    <label class="layui-form-label">ios上架版本号：</label>
-			    <div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
-			      <input type="text" name="ios1" value="{$data.ios1}" placeholder="请输入ios上架版本号" class="layui-input">
-			    </div>
-			 </div>
-			 <div class="layui-form-item">
-			    <label class="layui-form-label">ios下载地址：</label>
-			    <div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
-			      <input type="text" name="ios_url" value="{$data.ios_url}" placeholder="请输入ios下载地址" class="layui-input">
-			    </div>
-			 </div>
-			 <div class="layui-form-item">
-			    <label class="layui-form-label">更新提示语：</label>
-			    <div class="layui-input-block">
-			      <input type="text" name="gengxin_desc" value="{$data.gengxin_desc}" placeholder="请输入更新提示语" class="layui-input">
-			    </div>
-			  </div>
-		</div>
+
 
 		<div class="layui-tab-item">
 		     <div class="layui-form-item">
@@ -162,6 +125,14 @@
 				<input type="text" name="wechat_pay_key" value="{$data.wechat_pay_key}" placeholder="请输入微信支付密钥" class="layui-input">
 			</div>
 		 </div>
+		</div>
+		<div class="layui-tab-item" style="height: 380px;">
+			<div class="layui-form-item">
+				<label class="layui-form-label">分享规则简述：</label>
+				<div class="layui-input-block" style="min-width: 500px;">
+					<textarea style="display: none;" id="share_rule_des" name="share_rule_des">{$data.share_rule_des}</textarea>
+				</div>
+			</div>
 		</div>
 		<div class="layui-tab-item">
 			<div class="layui-form-item">
@@ -226,9 +197,9 @@
   </div>
 </form>
 <script>
-layui.use(['element','form'], function(){
+layui.use(['element','form','layedit'], function(){
   var $ = layui.jquery,element = layui.element;
-  var form = layui.form;
+  var form = layui.form ,layedit=layui.layedit;
 
 	$("#form_btn").click(function(){
 		var leg = $(".must").length;
@@ -243,6 +214,7 @@ layui.use(['element','form'], function(){
 			return false;
 		  }
     	}
+		layedit.sync(layeditor);
 		$("#form").ajaxSubmit(function(txt){
 			if(txt.code==1){
 				layer.msg(txt.msg);
@@ -263,7 +235,13 @@ layui.use(['element','form'], function(){
 			$('.for-ladder').removeClass("layui-hide");
 		}
 	});
-
+	var layeditor = layedit.build('share_rule_des', {
+		height: 300,
+		uploadImage: {
+			url: "{:url('admin/upload/up_for_edit')}",
+			type: 'post'
+		}
+	});
 
 
 });

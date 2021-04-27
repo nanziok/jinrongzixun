@@ -6,6 +6,7 @@ namespace app\admin\controller;
 
 use think\Db;
 use think\Exception;
+use think\Queue;
 
 class Order extends Base
 {
@@ -77,6 +78,8 @@ class Order extends Base
                 ->field("o.*,s.name as service_text, u.phone as user_text")
                 ->find();
             $row["pay_type_text"] = $this->getPayTypeText($row["pay_type"]);
+            $row["create_time"] = d($row["create_time"]);
+
             $this->assign("status_list", $this->statusList());
             $this->assign("row",$row);
             return view();
@@ -168,14 +171,27 @@ class Order extends Base
      * @throws \think\exception\DbException
      */
     public function wdl_edit_log(){
+        $id = input("id");
         if(request()->isPost()){
-
+            $row = db::name("service_test_log")->where("id", $id)->find();
+            $data = input();
+            $ret = Db::name("service_test_log")->strict(false)->where("id",$id)->update($data);
+            if($ret === false){
+                $this->error("编辑失败");
+            }
+            $params = [
+                "from_id" => $row["user_id"],
+                "test_log_id" => $data["id"]
+            ];
+            Queue::push("app\job\User@testLogReply",$params);
+            $this->success("编辑成功");
         }else{
-            $id = input("id");
+
             $row = Db::name("service_test_log")->alias("l")
                 ->join("ke_user u","u.id=l.user_id","left")
                 ->join("ke_service s","s.id=l.service_id","left")
-                ->where("l.id", $id)->field("l.id, l.content, l.notes, l.create_time, l.status, l.service_id, u.phone as user_text, s.name as service_text")
+                ->where("l.id", $id)
+                ->field("l.id, l.content, l.notes, l.create_time, l.status, l.service_id, l.service_text, u.phone as user_text")
                 ->find();
 //            $row["content"] = json_decode($row["content"], true);
             if($row["service_id"] === 0){
@@ -219,30 +235,7 @@ class Order extends Base
         $list = $this->statusList();
         return array_key_exists($key,$list) ? $list[$key] : '--';
     }
-    /**
-     * 生成订单编号
-     * @param int type 1=数字加字母，2=纯数字
-     * @return string
-     * @throws Exception
-     */
-    private function getOrderNo($type=1){
-        $string = '123456789oabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $return = date('Ymd');
-        if($type==1) {
-            for ($i = 0; $i < 6; $i++) {
-                $return .= substr($string, mt_rand(0,strlen($string)),1);
-            }
 
-        }else{
-            $return .= mt_rand(100000, 999999);
-        }
-        $ret = Db::name("order")->where("order_no",$return)->find();
-        if(empty($ret)){
-            return $return;
-        }else{
-            return $this->getOrderNo($type);
-        }
-    }
 
     private function getPayTypeText($key){
         $list = [

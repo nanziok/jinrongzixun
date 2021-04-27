@@ -34,7 +34,7 @@ class Base extends Controller
        		$a=$request->action();
 			$idarray=Db::name("user_admin_auth")->where("role_id=".$admin['user_cat'])->column('action_id');
             
-			if($m == 'Upload' && ($a == 'img' || $a == 'up_do')){
+			if($m == 'Upload' && ($a == 'img' || $a == 'up_do' || $a=='up_for_edit')){
 				$auth=true;
 			}elseif($m == 'Index' && ($a == 'index'|| $a == 'main')){
 			    $auth=true;

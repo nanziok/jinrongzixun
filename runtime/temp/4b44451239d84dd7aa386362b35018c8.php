@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:90:"F:\Work space\jinrongzixun\public_html/../application/admin\view\service\wdl_edit_kyc.html";i:1619176497;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:90:"F:\Work space\jinrongzixun\public_html/../application/admin\view\service\wdl_edit_kyc.html";i:1619404560;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,7 +97,7 @@
   <div class="layui-form-item">
     <label class="layui-form-label">题目配置</label>
     <div class="layui-input-block" style="min-width: 850px" id="test-setting-box">
-      <textarea name="content" placeholder="请配置问卷问题" class="layui-textarea layui-hide must"></textarea>
+      <textarea name="content" placeholder="请配置问卷问题" class="layui-textarea layui-hide must"><?php echo $row['content']; ?></textarea>
       <dl class="test-data-title">
         <dd class="xuhao">序号</dd><dd class="type">类型</dd><dd class="timu">题目</dd><dd class="tinei">内容</dd><dd class="act">操作</dd>
       </dl>

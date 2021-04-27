@@ -8,6 +8,8 @@ use think\Controller;
 use EasyWeChat\Factory;
 use think\Db;
 use think\Exception;
+use think\Hook;
+use think\Queue;
 
 /**
  * @title 登录接口
@@ -35,28 +37,17 @@ class Login extends Controller
     }
 
     /**
-     * @title 获得session_key
-     * @description 通过js_code换取session_key
-     * @url /api/login/session
-     * @author 开发者
-     * @method GET
-     * @param name:code type:string require:1 default: other: desc:获得session_key、openid
-     *
-     */
-    public function session(){
-        $code = input("jscode","");
-        $session = $this->app->auth->session($code);
-        $this->result($session,1,'获得session_key','json');
-    }
-    /**
      * @title 微信小程序登录
      * @description 小程序段调用wx.login(),wx.getUserInfo()之后，发起登陆
      * @url /api/login/login
      * @author 开发者
      * @method POST
-     * @param name:iv type:string require:1 default: other: desc:前端button[getPhoneNumber]获得
-     * @param name:session_key type:string require:1 default: other: desc:session接口返回的session_key
-     * @param name:encryptedData type:string require:1 default: other: desc:前端button[getPhoneNumber]加密字符串
+     * @param name:code type:string require:1 default: other: desc:wx.login()接口获得code
+     * @param name:iv type:string require:1 default: other: desc:wx.getUserInfo()接口获得
+     * @param name:rawData type:string require:1 default: other: desc:wx.getUserInfo()接口获得
+     * @param name:signature type:string require:1 default: other: desc:wx.getUserInfo()接口获得
+     * @param name:encryptedData type:string require:1 default: other: desc:wx.getUserInfo()接口获得加密字符串
+     * @param name:inviteCode type:int require:0 default:0 other desc:邀请码，邀请人的id
      * @throws \EasyWeChat\Kernel\Exceptions\DecryptException
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidConfigException
      * @throws \think\db\exception\DataNotFoundException
@@ -64,12 +55,30 @@ class Login extends Controller
      * @throws \think\exception\DbException
      */
     public function login(){
-        $phone = input("phone","");
-        $session_key = input("session_key","");
-        $encryptedData = input('encrypted_data');
+        $js_code = input("jscode","");
+        $rawData = input("rawDat","");
+        $sessionKey = input("sessionKey","");
+        $encryptedData = input('encryptedData');
         $iv = input("in","");
+        $signature = input("signature","");
+        $inviteCode = input("inviteCode",0, "int");
         try{
-            $userInfo = $this->app->encryptor->decryptData($session_key, $iv, $encryptedData);
+            Db::startTrans();
+            //判断邀请人是否存在 ? 是不是应该判断
+            $invite_user_info = Db::name("user")->where("id",$inviteCode)->find();
+            if(empty($invite_user_info)){
+                $inviteCode = 0;   //？？？？？？？？
+                throw new Exception("邀请人信息有误");
+            }
+            $session = $this->app->auth->session($js_code);
+            if($session["code "]!=0){
+                throw new Exception("获得session_key失败");
+            }
+            $signature2 = sha1($rawData . $sessionKey);
+            if ($signature2 !== $signature) {
+                throw new Exception("验签失败");
+            }
+            $userInfo = $this->app->encryptor->decryptData($session['session_key'], $iv, $encryptedData);
             $temp_array = [
                 "openid"   =>  $userInfo["openId"],
                 "unionid"  =>  in_array("unionid",$userInfo) ? $userInfo["unionid"] : "",
@@ -81,7 +90,7 @@ class Login extends Controller
             if(empty($if_exist)) {
                 //创建新用户
                 $user_new = [
-                    "phone"=>$phone,
+                    "phone"=>"",
                     "password"=>$this->getRandStr(8),
                     "headimg"=> $userInfo["avatarUrl"],
                     "username"=> "",
@@ -89,7 +98,8 @@ class Login extends Controller
 //                    "sex"=> "",
 //                    "age"=> "",
                     "status"=>1,
-                    "add_time"=>1
+                    "from_id"=>$inviteCode,
+                    "add_time"=>time()
                 ];
                 $user_id = Db::name("user")->insertGetId($user_new);
                 if($user_id ===  false){
@@ -97,7 +107,7 @@ class Login extends Controller
                 }
                 Db::name("user")->where("id",$user_id)->update(["username"=>'u'.$user_id]);
                 $temp_array["user_id"] = $user_id;
-                $ret = Db::name("third")->insertGetId($temp_array);
+                $ret = Db::name("third")->insert($temp_array);
                 if ($ret === false) {
                     throw new Exception("存储三方登录信息失败");
                 }
@@ -126,8 +136,14 @@ class Login extends Controller
                 ->where("u.id",$user_id)
                 ->field("u.*,t.token")
                 ->find();
+            Db::commit();
+            $params = [
+                "from_id" => $inviteCode,
+            ];
+            Queue::push("app\job\User@userInvite",$params);
             $this->result($user_info,1,'登录成功','json');
         }catch (Exception $e){
+            Db::rollback();
             $this->result("",0,"登录失败".$e->getMessage(),'json');
         }
     }

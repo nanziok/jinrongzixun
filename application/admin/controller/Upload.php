@@ -31,4 +31,16 @@ class Upload extends Base
         $ret['code'] = 0;
         return $ret;
     }
+
+    /**适配 layedit
+     * @return array
+     */
+    public function up_for_edit(){
+        $ret = $this->up_do();
+        $ret["data"] = [
+            "src" => $ret["pic"],
+            "title"=>""
+        ];
+        return $ret;
+    }
 }

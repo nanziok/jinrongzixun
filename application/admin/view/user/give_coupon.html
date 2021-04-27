@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+{load href="/static/manage/css/style.css" /}
+{load href="/static/manage/js/jquery-1.8.1.min.js" /}
+{load href="/static/manage/layui/css/layui.css" /}
+{load href="/static/manage/layui/layui.js" /}
+{load href="/static/manage/js/public.js" /}
+{load href="/static/manage/js/jquery.form.js" /}
+<style>
+    .layui-form{margin: 0 auto;width: 90%;margin-top: 10px;}
+    .layui-form-pane .layui-input-block{width:50%;}
+</style>
+<form class="layui-form layui-form-pane" method="post" id="form" >
+    <div class="layui-form-item">
+        <label class="layui-form-label">赠送人</label>
+        <div class="layui-input-block"><span class="require-field">*</span>
+            <input type="hidden" name="user_id" value="{:input('id')}">
+            <input type="text" name="user_text"  placeholder="请选择赠送人" class="layui-input must" value="{$user_text}" disabled readonly>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">优惠券名称</label>
+        <div class="layui-input-block"><span class="require-field">*</span>
+            <input type="text" name="name"  placeholder="请输入优惠券名称" class="layui-input must" value="系统赠送优惠券">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">优惠券类型</label>
+        <div class="layui-input-block"><span class="require-field">*</span>
+            <select class="layui-select" name="type" lay-filter="switch-type">
+                <option value="0">请选择</option>
+                {volist name="type_list" id="vo" key="key1"}
+                <option value="{$key1}">{$vo}</option>
+                {/volist}
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">有效截止日</label>
+        <div class="layui-input-block"><span class="require-field">*</span>
+            <input type="text" name="end_time" id="date_timeout" placeholder="请选择有效截止日" class="layui-input must" value="" autocomplete="off">
+        </div>
+    </div>
+    <div class="layui-form-item for-use_limit layui-hide">
+        <label class="layui-form-label">满减条件</label>
+        <div class="layui-input-block"><span class="require-field">*</span>
+            <input type="number" step="1.00" name="rule"  placeholder="请输入满减条件" class="layui-input" value="0.00">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">优惠券金额</label>
+        <div class="layui-input-block"><span class="require-field">*</span>
+            <input type="number" step="1.00" name="fee"  placeholder="请输入优惠券金额" class="layui-input must" value="0.00">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button type="button" class="layui-btn" id="form_btn">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-normal">重置</button>
+        </div>
+    </div>
+</form>
+<script>
+    layui.use(['laydate','form'], function(){
+        var form = layui.form
+        ,laydate = layui.laydate;
+        submit_form();
+
+        form.on("select(switch-type)",function (data) {
+            if(data.value == 1){
+                $(".for-use_limit").removeClass("layui-hide")
+            }else{
+                $(".for-use_limit").addClass("layui-hide")
+            }
+        })
+        laydate.render({
+            elem: '#date_timeout'
+            ,btns: ['clear', 'now']
+            ,trigger: 'click'
+        })
+    })
+</script>
+</body>
+</html>

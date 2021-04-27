@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"F:\Work space\jinrongzixun\public_html/../application/admin\view\user\index.html";i:1617765284;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"F:\Work space\jinrongzixun\public_html/../application/admin\view\user\index.html";i:1619409414;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,31 +22,7 @@
 	<div class="layui-table-tool">
 	  <div class="layui-table-tool-temp"> 
 		 <div class="demoTable"> 
-			 搜索手机号： <div class="layui-inline"> <input class="layui-input" id="phone" placeholder="请输入"/></div> 
-			 &nbsp;&nbsp;年龄范围：<div class="layui-inline">
-			     <select id="age">
-			     <option value="0">请选择</option> 
-					 <?php if(is_array($age) || $age instanceof \think\Collection || $age instanceof \think\Paginator): $i = 0; $__LIST__ = $age;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-					  <option value="<?php echo $vo['id']; ?>"><?php echo $vo['name']; ?></option>
-					 <?php endforeach; endif; else: echo "" ;endif; ?>
-          </select>
-			  </div> 
-			   &nbsp;&nbsp;视力情况：<div class="layui-inline">
-			     <select id="shili">
-			     <option value="0">请选择</option> 
-					 <?php if(is_array($shili) || $shili instanceof \think\Collection || $shili instanceof \think\Paginator): $i = 0; $__LIST__ = $shili;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-					  <option value="<?php echo $vo['id']; ?>"><?php echo $vo['name']; ?></option>
-					 <?php endforeach; endif; else: echo "" ;endif; ?>
-          </select>
-			  </div> 
-			   &nbsp;&nbsp;调理进度：<div class="layui-inline">
-			     <select id="tiaoli">
-			     <option value="0">请选择</option> 
-					 <?php if(is_array($tiaoli) || $tiaoli instanceof \think\Collection || $tiaoli instanceof \think\Paginator): $i = 0; $__LIST__ = $tiaoli;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-					  <option value="<?php echo $vo['id']; ?>"><?php echo $vo['name']; ?></option>
-					 <?php endforeach; endif; else: echo "" ;endif; ?>
-          </select>
-			  </div> 
+			 搜索手机号： <div class="layui-inline"> <input class="layui-input" id="phone" placeholder="请输入"/></div>
 			    &nbsp;&nbsp;注册时间：<div class="layui-inline"> <input class="layui-input" id="start_date" value="<?php echo input('start_date'); ?>" placeholder="请输入"/></div>
 			~~&nbsp;<div class="layui-inline"> <input class="layui-input" id="end_date" value="<?php echo input('end_date'); ?>" placeholder="请输入"/></div>
 			 <button class="layui-btn layui-btn-sm" onclick="chongzai();">搜索</button> 
@@ -57,7 +33,8 @@
 </div>
 <table id="demo" lay-filter="test" class="layui-hide"></table>
 <script type="text/html" id="barDemo">
-  <a class="layui-btn layui-btn-xs" lay-event="edit_id">编辑</a>
+  <a class="layui-btn layui-btn-xs" lay-event="coupon_id">赠券</a>
+  <a class="layui-btn layui-btn-xs" lay-event="edit_id">改密</a>
   <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="del">删除</a>
 </script>
 <script type="text/html" id="switchTpl">
@@ -101,17 +78,14 @@ layui.use('table', function(){
 		  {field: 'id', title: '会员ID',width:100,align:'center'},
 		  {field:'headimg', title:'头像', width:120, templet: '#img', unresize: true,align:'center'},
 		  {field: 'phone', title: '手机号',width:120,align:'center'},
-		  {field: 'username', title: '昵称',width:120,align:'center'},
+		  {field: 'username', title: '昵称',width:200,align:'center'},
 		  {field: 'sex', title: '性别',width:50,align:'center'},
+
+		  {field: 'realname', title: '真实姓名',align:'center'},
+		  {field: 'age', title: '年龄',align:'center'},
 		  {field: 'add_time', title: '添加时间',width:200,align:'center'},
-		  {field:'status', title:'状态', width:120, templet: '#switchTpl', unresize: true,align:'center'},
-		  {field: 'realname', title: '真实姓名',width:120,align:'center'},
-		  {field: 'age', title: '年龄',width:50,align:'center'},
-		  {field: 'shili', title: '视力情况',width:100,align:'center'},
-		  {field: 'tiaoli', title: '调理进度',width:100,align:'center'},
-		  {field: 'desc', title: '个人信息',align:'center'},
-		  {field: 'shuju', title: '个人数据',width:200,align:'center'},
-		  {fixed: 'right', title:'操作', width:120,align:'center', toolbar: '#barDemo'}
+		  {field:'status', title:'状态', templet: '#switchTpl', unresize: true,align:'center'},
+		  {fixed: 'right', title:'操作', align:'center', toolbar: '#barDemo'}
 		]],
 		id:'demo'
 	  });
@@ -125,6 +99,8 @@ layui.use('table', function(){
 		case 'del':
 		del(obj.data.id,"wdl_del");
 		break;
+		case 'coupon_id':
+			open_window(obj.data.id, "wdl_add_coupon", "赠送优惠券","60%", "700px");
 	  };
   });
 

@@ -8,7 +8,7 @@ use think\Controller;
  * @header name:key require:1 default: desc:秘钥(区别设置)
  * @param name:public type:int require:1 default:1 other: desc:公共参数(区别设置)
  */
-class Demo extends Api
+class Demo
 {
     /**
      * @title 测试demo接口
@@ -27,7 +27,7 @@ class Demo extends Api
      * @list_messages message_id:消息ID content:消息内容
      * @return object:对象信息@!
      * @object attribute1:对象属性1 attribute2:对象属性2
-     * @return array:数组值#
+     * @return array:数组值
      * @return list_user:用户列表@
      * @list_user name:名称 mobile:手机号 list_follow:关注列表@
      * @list_follow user_id:用户id name:名称

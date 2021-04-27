@@ -49,7 +49,7 @@ class Xitong extends Base
 		}
 		$this->editJijinSet($data);
 
-            $do=Db::name("xitong")->update($data);
+            $do=Db::name("xitong")->strict(false)->update($data);
 		if($do){
 			$this->success("修改成功！");
 		}else{
