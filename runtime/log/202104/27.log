@@ -12781,3 +12781,1530 @@
   6 => 'return',
 ) ]
 [ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2021-04-27T17:43:32+08:00 ] 127.0.0.1 GET /manage.php/xitong/caidan_index.html
+[ info ] jinrong.egg.cc/manage.php/xitong/caidan_index.html [运行时间：0.069777s][吞吐率：14.33req/s] [内存消耗：2,943.53kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'caidan_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->caidan_index[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\xitong\caidan_index.html [ array (
+  0 => 'admin',
+  1 => 'site',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002001s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.001032s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000320s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000811s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000294s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000587s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000632s ]
+[ sql ] [ SQL ] SELECT `id` FROM `ke_user_admin_action` WHERE  `m` = 'Xitong'  AND `a` = 'caidan_index' LIMIT 1 [ RunTime:0.000273s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:43:32+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_index.html?page=1&limit=10
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_index.html?page=1&limit=10 [运行时间：0.048632s][吞吐率：20.56req/s] [内存消耗：2,886.88kb] [文件加载：66]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/caidan_index.html',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_index[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001613s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.001251s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000365s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000952s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000303s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000639s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000782s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=0 ) ORDER BY listorder asc [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=5 ) ORDER BY listorder asc [ RunTime:0.000243s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=1 ) ORDER BY listorder asc [ RunTime:0.000261s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=9 ) ORDER BY listorder asc [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=37 ) ORDER BY listorder asc [ RunTime:0.000340s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=33 ) ORDER BY listorder asc [ RunTime:0.000286s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=2 ) ORDER BY listorder asc [ RunTime:0.000290s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=15 ) ORDER BY listorder asc [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=197 ) ORDER BY listorder asc [ RunTime:0.000248s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=205 ) ORDER BY listorder asc [ RunTime:0.000248s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=208 ) ORDER BY listorder asc [ RunTime:0.000267s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ke_user_admin_action` LIMIT 1 [ RunTime:0.000197s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:43:35+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_edit?id=208
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_edit?id=208 [运行时间：0.059143s][吞吐率：16.91req/s] [内存消耗：3,085.07kb] [文件加载：71]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_edit',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/caidan_index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'id' => '208',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_edit[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\xitong\caidan_edit.html [ array (
+  0 => 'admin',
+  1 => 'site',
+  2 => 'data',
+  3 => 'cat',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001972s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.001365s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000401s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.001338s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000492s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.001010s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000349s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000947s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  id=208 ) LIMIT 1 [ RunTime:0.000440s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=0 ) ORDER BY listorder asc [ RunTime:0.000368s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:43:39+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_edit_do.html?id=208&fid=0&name=%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86&m=Order&a=index&listorder=50&icon=dingdan&is_show=on
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_edit_do.html?id=208&fid=0&name=%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86&m=Order&a=index&listorder=50&icon=dingdan&is_show=on [运行时间：0.067717s][吞吐率：14.77req/s] [内存消耗：2,920.74kb] [文件加载：71]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_edit_do',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/wdl_caidan_edit?id=208',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'accept' => '*/*',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'id' => '208',
+  'fid' => '0',
+  'name' => '订单管理',
+  'm' => 'Order',
+  'a' => 'index',
+  'listorder' => '50',
+  'icon' => 'dingdan',
+  'is_show' => 'on',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_edit_do[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010696s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000925s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000327s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000770s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000330s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000971s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000419s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000924s ]
+[ sql ] [ SQL ] UPDATE `ke_user_admin_action`  SET `fid`=0,`name`='订单管理',`m`='Order',`a`='index',`listorder`=50,`icon`='dingdan',`is_show`=1  WHERE  `id` = 208 [ RunTime:0.000672s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:43:40+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_index.html?page=1&limit=10
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_index.html?page=1&limit=10 [运行时间：0.061682s][吞吐率：16.21req/s] [内存消耗：2,886.88kb] [文件加载：66]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/caidan_index.html',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_index[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010032s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000889s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000334s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000831s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000379s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000683s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000303s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000663s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=0 ) ORDER BY listorder asc [ RunTime:0.000375s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=5 ) ORDER BY listorder asc [ RunTime:0.000347s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=1 ) ORDER BY listorder asc [ RunTime:0.000367s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=9 ) ORDER BY listorder asc [ RunTime:0.000352s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=37 ) ORDER BY listorder asc [ RunTime:0.000333s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=33 ) ORDER BY listorder asc [ RunTime:0.000299s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=2 ) ORDER BY listorder asc [ RunTime:0.000296s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=15 ) ORDER BY listorder asc [ RunTime:0.000304s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=197 ) ORDER BY listorder asc [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=205 ) ORDER BY listorder asc [ RunTime:0.000230s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=208 ) ORDER BY listorder asc [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ke_user_admin_action` LIMIT 1 [ RunTime:0.000173s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:07+08:00 ] 127.0.0.1 GET /manage.php/index/index.html
+[ info ] jinrong.egg.cc/manage.php/index/index.html [运行时间：0.054860s][吞吐率：18.23req/s] [内存消耗：2,885.46kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/login/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Index->index[ F:\Work space\jinrongzixun\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\index\index.html [ array (
+  0 => 'admin',
+  1 => 'site',
+  2 => 'menu',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010009s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000981s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000458s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.001367s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000476s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000826s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000350s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000679s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a`,`icon` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 0 ORDER BY listorder asc [ RunTime:0.000429s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 5 ORDER BY listorder asc [ RunTime:0.000298s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 1 ORDER BY listorder asc [ RunTime:0.000321s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 9 ORDER BY listorder asc [ RunTime:0.000294s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 37 ORDER BY listorder asc [ RunTime:0.000323s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 33 ORDER BY listorder asc [ RunTime:0.000302s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 2 ORDER BY listorder asc [ RunTime:0.000285s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 15 ORDER BY listorder asc [ RunTime:0.000297s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 197 ORDER BY listorder asc [ RunTime:0.000276s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 205 ORDER BY listorder asc [ RunTime:0.000284s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 208 ORDER BY listorder asc [ RunTime:0.000290s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:07+08:00 ] 127.0.0.1 GET /manage.php/index/main.html
+[ info ] jinrong.egg.cc/manage.php/index/main.html [运行时间：0.044721s][吞吐率：22.36req/s] [内存消耗：2,734.39kb] [文件加载：68]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'main',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Index->main[ F:\Work space\jinrongzixun\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\index\main.html [ array (
+  0 => 'admin',
+  1 => 'site',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001278s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.001177s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000451s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.001786s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000422s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000924s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000366s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:12+08:00 ] 127.0.0.1 GET /manage.php/xitong/caidan_index.html
+[ info ] jinrong.egg.cc/manage.php/xitong/caidan_index.html [运行时间：0.039834s][吞吐率：25.10req/s] [内存消耗：2,943.53kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'caidan_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->caidan_index[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\xitong\caidan_index.html [ array (
+  0 => 'admin',
+  1 => 'site',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001572s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.001007s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000347s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000797s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000327s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000599s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000311s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000648s ]
+[ sql ] [ SQL ] SELECT `id` FROM `ke_user_admin_action` WHERE  `m` = 'Xitong'  AND `a` = 'caidan_index' LIMIT 1 [ RunTime:0.000288s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:12+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_index.html?page=1&limit=10
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_index.html?page=1&limit=10 [运行时间：0.045870s][吞吐率：21.80req/s] [内存消耗：2,886.88kb] [文件加载：66]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/caidan_index.html',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_index[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001537s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000909s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000337s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000869s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000384s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.001057s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000430s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000851s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=0 ) ORDER BY listorder asc [ RunTime:0.000387s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=5 ) ORDER BY listorder asc [ RunTime:0.000243s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=1 ) ORDER BY listorder asc [ RunTime:0.000285s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=9 ) ORDER BY listorder asc [ RunTime:0.000239s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=37 ) ORDER BY listorder asc [ RunTime:0.000268s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=33 ) ORDER BY listorder asc [ RunTime:0.000250s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=2 ) ORDER BY listorder asc [ RunTime:0.000236s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=15 ) ORDER BY listorder asc [ RunTime:0.000264s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=197 ) ORDER BY listorder asc [ RunTime:0.000247s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=205 ) ORDER BY listorder asc [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=208 ) ORDER BY listorder asc [ RunTime:0.000257s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ke_user_admin_action` LIMIT 1 [ RunTime:0.000231s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:16+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_edit?id=205
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_edit?id=205 [运行时间：0.043547s][吞吐率：22.96req/s] [内存消耗：2,951.30kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_edit',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/caidan_index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'id' => '205',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_edit[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\xitong\caidan_edit.html [ array (
+  0 => 'admin',
+  1 => 'site',
+  2 => 'data',
+  3 => 'cat',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002346s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.001210s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.001050s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000382s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000828s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000364s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000791s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  id=205 ) LIMIT 1 [ RunTime:0.000324s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=0 ) ORDER BY listorder asc [ RunTime:0.000322s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:20+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_edit?id=208
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_edit?id=208 [运行时间：0.050294s][吞吐率：19.88req/s] [内存消耗：2,951.30kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_edit',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/caidan_index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'id' => '208',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_edit[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\xitong\caidan_edit.html [ array (
+  0 => 'admin',
+  1 => 'site',
+  2 => 'data',
+  3 => 'cat',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010987s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000856s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000720s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000330s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000629s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000295s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000641s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  id=208 ) LIMIT 1 [ RunTime:0.000294s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=0 ) ORDER BY listorder asc [ RunTime:0.000352s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:26+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_edit?id=15
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_edit?id=15 [运行时间：0.050558s][吞吐率：19.78req/s] [内存消耗：2,951.31kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_edit',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/caidan_index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'id' => '15',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_edit[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\xitong\caidan_edit.html [ array (
+  0 => 'admin',
+  1 => 'site',
+  2 => 'data',
+  3 => 'cat',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010828s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000922s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000426s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000755s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000632s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000287s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000614s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  id=15 ) LIMIT 1 [ RunTime:0.000307s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=0 ) ORDER BY listorder asc [ RunTime:0.000341s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:31+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_edit?id=2
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_edit?id=2 [运行时间：0.049740s][吞吐率：20.10req/s] [内存消耗：2,951.29kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_edit',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/caidan_index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'id' => '2',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_edit[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\xitong\caidan_edit.html [ array (
+  0 => 'admin',
+  1 => 'site',
+  2 => 'data',
+  3 => 'cat',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010379s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000946s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000336s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000732s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000312s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000619s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000280s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000680s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000293s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=0 ) ORDER BY listorder asc [ RunTime:0.000343s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:36+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_edit?id=208
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_edit?id=208 [运行时间：0.062064s][吞吐率：16.11req/s] [内存消耗：2,951.30kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_edit',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/caidan_index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'id' => '208',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_edit[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\xitong\caidan_edit.html [ array (
+  0 => 'admin',
+  1 => 'site',
+  2 => 'data',
+  3 => 'cat',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010421s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000931s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000362s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000785s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000462s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000613s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000461s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000779s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  id=208 ) LIMIT 1 [ RunTime:0.000329s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=0 ) ORDER BY listorder asc [ RunTime:0.000353s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:41+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_edit_do.html?id=208&fid=0&name=%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86&m=Order&a=index&listorder=50&icon=icondingdan&is_show=on
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_edit_do.html?id=208&fid=0&name=%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86&m=Order&a=index&listorder=50&icon=icondingdan&is_show=on [运行时间：0.050355s][吞吐率：19.86req/s] [内存消耗：2,920.77kb] [文件加载：71]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_edit_do',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/wdl_caidan_edit?id=208',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'accept' => '*/*',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'id' => '208',
+  'fid' => '0',
+  'name' => '订单管理',
+  'm' => 'Order',
+  'a' => 'index',
+  'listorder' => '50',
+  'icon' => 'icondingdan',
+  'is_show' => 'on',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_edit_do[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010321s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000907s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000440s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000788s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000337s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000602s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000332s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000646s ]
+[ sql ] [ SQL ] UPDATE `ke_user_admin_action`  SET `fid`=0,`name`='订单管理',`m`='Order',`a`='index',`listorder`=50,`icon`='icondingdan',`is_show`=1  WHERE  `id` = 208 [ RunTime:0.000505s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:41+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_index.html?page=1&limit=10
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_index.html?page=1&limit=10 [运行时间：0.068374s][吞吐率：14.63req/s] [内存消耗：2,886.88kb] [文件加载：66]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/caidan_index.html',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_index[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010316s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000983s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000335s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000900s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000724s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000294s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000666s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=0 ) ORDER BY listorder asc [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=5 ) ORDER BY listorder asc [ RunTime:0.000276s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=1 ) ORDER BY listorder asc [ RunTime:0.000272s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=9 ) ORDER BY listorder asc [ RunTime:0.000242s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=37 ) ORDER BY listorder asc [ RunTime:0.000233s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=33 ) ORDER BY listorder asc [ RunTime:0.000302s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=2 ) ORDER BY listorder asc [ RunTime:0.000361s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=15 ) ORDER BY listorder asc [ RunTime:0.000328s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=197 ) ORDER BY listorder asc [ RunTime:0.000311s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=205 ) ORDER BY listorder asc [ RunTime:0.000298s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=208 ) ORDER BY listorder asc [ RunTime:0.000290s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ke_user_admin_action` LIMIT 1 [ RunTime:0.000217s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:43+08:00 ] 127.0.0.1 GET /manage.php/index/index.html
+[ info ] jinrong.egg.cc/manage.php/index/index.html [运行时间：0.053245s][吞吐率：18.78req/s] [内存消耗：2,885.47kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/login/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Index->index[ F:\Work space\jinrongzixun\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\index\index.html [ array (
+  0 => 'admin',
+  1 => 'site',
+  2 => 'menu',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010763s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000883s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000354s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000737s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000337s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000675s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000303s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000619s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a`,`icon` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 0 ORDER BY listorder asc [ RunTime:0.000348s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000243s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 5 ORDER BY listorder asc [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 1 ORDER BY listorder asc [ RunTime:0.000277s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 9 ORDER BY listorder asc [ RunTime:0.000264s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 37 ORDER BY listorder asc [ RunTime:0.000257s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 33 ORDER BY listorder asc [ RunTime:0.000305s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 2 ORDER BY listorder asc [ RunTime:0.000298s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 15 ORDER BY listorder asc [ RunTime:0.000257s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 197 ORDER BY listorder asc [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 205 ORDER BY listorder asc [ RunTime:0.000256s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 208 ORDER BY listorder asc [ RunTime:0.000276s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:43+08:00 ] 127.0.0.1 GET /manage.php/index/main.html
+[ info ] jinrong.egg.cc/manage.php/index/main.html [运行时间：0.044780s][吞吐率：22.33req/s] [内存消耗：2,734.39kb] [文件加载：68]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'main',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Index->main[ F:\Work space\jinrongzixun\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\index\main.html [ array (
+  0 => 'admin',
+  1 => 'site',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002906s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000997s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000921s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000394s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000731s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000306s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:47+08:00 ] 127.0.0.1 GET /manage.php/xitong/caidan_index.html
+[ info ] jinrong.egg.cc/manage.php/xitong/caidan_index.html [运行时间：0.051373s][吞吐率：19.47req/s] [内存消耗：2,943.53kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'caidan_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->caidan_index[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\xitong\caidan_index.html [ array (
+  0 => 'admin',
+  1 => 'site',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011296s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.001200s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000381s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000782s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000322s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000614s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000289s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000661s ]
+[ sql ] [ SQL ] SELECT `id` FROM `ke_user_admin_action` WHERE  `m` = 'Xitong'  AND `a` = 'caidan_index' LIMIT 1 [ RunTime:0.000297s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:47+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_index.html?page=1&limit=10
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_index.html?page=1&limit=10 [运行时间：0.046544s][吞吐率：21.49req/s] [内存消耗：2,886.88kb] [文件加载：66]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/caidan_index.html',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_index[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001496s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000995s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000290s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000756s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000556s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000799s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000290s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.001299s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=0 ) ORDER BY listorder asc [ RunTime:0.000449s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=5 ) ORDER BY listorder asc [ RunTime:0.000264s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=1 ) ORDER BY listorder asc [ RunTime:0.000305s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=9 ) ORDER BY listorder asc [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=37 ) ORDER BY listorder asc [ RunTime:0.000239s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=33 ) ORDER BY listorder asc [ RunTime:0.000236s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=2 ) ORDER BY listorder asc [ RunTime:0.000230s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=15 ) ORDER BY listorder asc [ RunTime:0.000227s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=197 ) ORDER BY listorder asc [ RunTime:0.000240s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=205 ) ORDER BY listorder asc [ RunTime:0.000336s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=208 ) ORDER BY listorder asc [ RunTime:0.000289s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ke_user_admin_action` LIMIT 1 [ RunTime:0.000212s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:50+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_edit?id=205
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_edit?id=205 [运行时间：0.053627s][吞吐率：18.65req/s] [内存消耗：2,951.31kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_edit',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/caidan_index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'id' => '205',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_edit[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\xitong\caidan_edit.html [ array (
+  0 => 'admin',
+  1 => 'site',
+  2 => 'data',
+  3 => 'cat',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010548s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000827s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000320s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000681s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000290s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000587s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000617s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  id=205 ) LIMIT 1 [ RunTime:0.000243s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=0 ) ORDER BY listorder asc [ RunTime:0.000319s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:55+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_edit_do.html?id=205&fid=0&name=%E4%B8%9A%E5%8A%A1%E7%AE%A1%E7%90%86&m=service&a=index&listorder=50&icon=iconzhaoshangdailifenlei&is_show=on
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_edit_do.html?id=205&fid=0&name=%E4%B8%9A%E5%8A%A1%E7%AE%A1%E7%90%86&m=service&a=index&listorder=50&icon=iconzhaoshangdailifenlei&is_show=on [运行时间：0.051877s][吞吐率：19.28req/s] [内存消耗：2,920.90kb] [文件加载：71]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_edit_do',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/wdl_caidan_edit?id=205',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'accept' => '*/*',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'id' => '205',
+  'fid' => '0',
+  'name' => '业务管理',
+  'm' => 'service',
+  'a' => 'index',
+  'listorder' => '50',
+  'icon' => 'iconzhaoshangdailifenlei',
+  'is_show' => 'on',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_edit_do[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010877s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.001211s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000378s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000747s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000368s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000626s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000311s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000674s ]
+[ sql ] [ SQL ] UPDATE `ke_user_admin_action`  SET `fid`=0,`name`='业务管理',`m`='service',`a`='index',`listorder`=50,`icon`='iconzhaoshangdailifenlei',`is_show`=1  WHERE  `id` = 205 [ RunTime:0.000453s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:56+08:00 ] 127.0.0.1 GET /manage.php/xitong/wdl_caidan_index.html?page=1&limit=10
+[ info ] jinrong.egg.cc/manage.php/xitong/wdl_caidan_index.html?page=1&limit=10 [运行时间：0.070740s][吞吐率：14.14req/s] [内存消耗：2,886.88kb] [文件加载：66]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'xitong',
+    2 => 'wdl_caidan_index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/xitong/caidan_index.html',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Xitong->wdl_caidan_index[ F:\Work space\jinrongzixun\application\admin\controller\Xitong.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010566s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000923s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000307s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000718s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000328s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000795s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000320s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000738s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=0 ) ORDER BY listorder asc [ RunTime:0.000354s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=5 ) ORDER BY listorder asc [ RunTime:0.000248s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=1 ) ORDER BY listorder asc [ RunTime:0.000242s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=9 ) ORDER BY listorder asc [ RunTime:0.000241s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=37 ) ORDER BY listorder asc [ RunTime:0.000236s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=33 ) ORDER BY listorder asc [ RunTime:0.000230s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=2 ) ORDER BY listorder asc [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=15 ) ORDER BY listorder asc [ RunTime:0.000228s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=197 ) ORDER BY listorder asc [ RunTime:0.000216s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=205 ) ORDER BY listorder asc [ RunTime:0.000268s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_user_admin_action` WHERE  (  fid=208 ) ORDER BY listorder asc [ RunTime:0.000228s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ke_user_admin_action` LIMIT 1 [ RunTime:0.000173s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:57+08:00 ] 127.0.0.1 GET /manage.php/index/index.html
+[ info ] jinrong.egg.cc/manage.php/index/index.html [运行时间：0.054620s][吞吐率：18.31req/s] [内存消耗：2,885.49kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/login/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Index->index[ F:\Work space\jinrongzixun\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\index\index.html [ array (
+  0 => 'admin',
+  1 => 'site',
+  2 => 'menu',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010745s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000939s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000319s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000718s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000311s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000645s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000285s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000606s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a`,`icon` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 0 ORDER BY listorder asc [ RunTime:0.000380s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000389s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 5 ORDER BY listorder asc [ RunTime:0.000336s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 1 ORDER BY listorder asc [ RunTime:0.000332s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 9 ORDER BY listorder asc [ RunTime:0.000308s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 37 ORDER BY listorder asc [ RunTime:0.000306s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 33 ORDER BY listorder asc [ RunTime:0.000298s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 2 ORDER BY listorder asc [ RunTime:0.000299s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 15 ORDER BY listorder asc [ RunTime:0.000310s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 197 ORDER BY listorder asc [ RunTime:0.000294s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 205 ORDER BY listorder asc [ RunTime:0.000285s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`m`,`a` FROM `ke_user_admin_action` WHERE  `is_show` = 1  AND `fid` = 208 ORDER BY listorder asc [ RunTime:0.000314s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:45:57+08:00 ] 127.0.0.1 GET /manage.php/index/main.html
+[ info ] jinrong.egg.cc/manage.php/index/main.html [运行时间：0.049275s][吞吐率：20.29req/s] [内存消耗：2,734.39kb] [文件加载：68]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'main',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Index->main[ F:\Work space\jinrongzixun\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\index\main.html [ array (
+  0 => 'admin',
+  1 => 'site',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001978s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.001704s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000366s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000964s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000432s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000844s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000285s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:46:00+08:00 ] 127.0.0.1 GET /manage.php/service/cat.html
+[ info ] jinrong.egg.cc/manage.php/service/cat.html [运行时间：0.049116s][吞吐率：20.36req/s] [内存消耗：2,888.05kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'service',
+    2 => 'cat',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Service->cat[ F:\Work space\jinrongzixun\application\admin\controller\Service.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\service\cat.html [ array (
+  0 => 'admin',
+  1 => 'site',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011129s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000827s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000325s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000719s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000318s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000600s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000279s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000601s ]
+[ sql ] [ SQL ] SELECT `id` FROM `ke_user_admin_action` WHERE  `m` = 'Service'  AND `a` = 'cat' LIMIT 1 [ RunTime:0.000289s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:46:01+08:00 ] 127.0.0.1 GET /manage.php/service/wdl_cat.html?page=1&limit=10
+[ info ] jinrong.egg.cc/manage.php/service/wdl_cat.html?page=1&limit=10 [运行时间：0.041811s][吞吐率：23.92req/s] [内存消耗：2,905.77kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'service',
+    2 => 'wdl_cat',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/service/cat.html',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'cache-control' => 'no-cache',
+  'pragma' => 'no-cache',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Service->wdl_cat[ F:\Work space\jinrongzixun\application\admin\controller\Service.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001108s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000839s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000692s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000283s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000607s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000271s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_service` [ RunTime:0.000790s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ke_service` ORDER BY id desc LIMIT 1 [ RunTime:0.000236s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ke_service` LIMIT 1 [ RunTime:0.000235s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_service` ORDER BY id desc LIMIT 0,10 [ RunTime:0.000294s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:46:14+08:00 ] 127.0.0.1 GET /manage.php/order/index.html
+[ info ] jinrong.egg.cc/manage.php/order/index.html [运行时间：0.049904s][吞吐率：20.04req/s] [内存消耗：2,895.90kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'order',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Order->index[ F:\Work space\jinrongzixun\application\admin\controller\Order.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\order\index.html [ array (
+  0 => 'admin',
+  1 => 'site',
+  2 => 'status_list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010764s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.001148s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000552s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000843s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000301s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000605s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000277s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000646s ]
+[ sql ] [ SQL ] SELECT `id` FROM `ke_user_admin_action` WHERE  `m` = 'Order'  AND `a` = 'index' LIMIT 1 [ RunTime:0.000283s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:46:14+08:00 ] 127.0.0.1 POST /manage.php/order/index.html
+[ info ] jinrong.egg.cc/manage.php/order/index.html [运行时间：0.043704s][吞吐率：22.88req/s] [内存消耗：2,920.97kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'order',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/order/index.html',
+  'origin' => 'http://jinrong.egg.cc',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '15',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Order->index[ F:\Work space\jinrongzixun\application\admin\controller\Order.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001098s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000774s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000741s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000277s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000580s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000225s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000593s ]
+[ sql ] [ SQL ] SELECT `id` FROM `ke_user_admin_action` WHERE  `m` = 'Order'  AND `a` = 'index' LIMIT 1 [ RunTime:0.000236s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_order` [ RunTime:0.000701s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ke_order` `o` LIMIT 1 [ RunTime:0.000181s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ke_order` `o` LEFT JOIN `ke_service` `s` ON `s`.`id`=`o`.`service_id` LEFT JOIN `ke_user` `u` ON `u`.`id`=`o`.`user_id` LIMIT 1 [ RunTime:0.000383s ]
+[ sql ] [ SQL ] SELECT `o`.*,s.name as service_text,u.phone as user_text FROM `ke_order` `o` LEFT JOIN `ke_service` `s` ON `s`.`id`=`o`.`service_id` LEFT JOIN `ke_user` `u` ON `u`.`id`=`o`.`user_id` LIMIT 0,10 [ RunTime:0.000277s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_service_test_log` [ RunTime:0.000734s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ke_service_test_log` WHERE  `order_id` = 2 LIMIT 1 [ RunTime:0.000223s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:46:16+08:00 ] 127.0.0.1 GET /manage.php/order/kyc_logs.html
+[ info ] jinrong.egg.cc/manage.php/order/kyc_logs.html [运行时间：0.049864s][吞吐率：20.05req/s] [内存消耗：2,896.45kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'order',
+    2 => 'kyc_logs',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Order->kyc_logs[ F:\Work space\jinrongzixun\application\admin\controller\Order.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\public_html/../application/admin\view\order\kyc_logs.html [ array (
+  0 => 'admin',
+  1 => 'site',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010804s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.001019s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000362s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000985s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000350s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000639s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000236s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000603s ]
+[ sql ] [ SQL ] SELECT `id` FROM `ke_user_admin_action` WHERE  `m` = 'Order'  AND `a` = 'kyc_logs' LIMIT 1 [ RunTime:0.000246s ]
+---------------------------------------------------------------
+[ 2021-04-27T17:46:16+08:00 ] 127.0.0.1 POST /manage.php/order/kyc_logs.html
+[ info ] jinrong.egg.cc/manage.php/order/kyc_logs.html [运行时间：0.053121s][吞吐率：18.82req/s] [内存消耗：2,919.73kb] [文件加载：69]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ BIND ] 'admin'
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'order',
+    2 => 'kyc_logs',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'adminid=2',
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/manage.php/order/kyc_logs.html',
+  'origin' => 'http://jinrong.egg.cc',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '15',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\controller\Order->kyc_logs[ F:\Work space\jinrongzixun\application\admin\controller\Order.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010277s ] mysql:host=localhost;port=3306;dbname=jinrongch;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin` [ RunTime:0.000937s ]
+[ sql ] [ SQL ] SELECT `id`,`name`,`user_cat`,`status` FROM `ke_user_admin` WHERE  (  id=2 ) LIMIT 1 [ RunTime:0.000354s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_xitong` [ RunTime:0.000725s ]
+[ sql ] [ SQL ] SELECT * FROM `ke_xitong` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_auth` [ RunTime:0.000735s ]
+[ sql ] [ SQL ] SELECT `action_id` FROM `ke_user_admin_auth` WHERE  (  role_id=1 ) [ RunTime:0.000444s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_user_admin_action` [ RunTime:0.000754s ]
+[ sql ] [ SQL ] SELECT `id` FROM `ke_user_admin_action` WHERE  `m` = 'Order'  AND `a` = 'kyc_logs' LIMIT 1 [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ke_service_test_log` [ RunTime:0.000688s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ke_service_test_log` `l` LIMIT 1 [ RunTime:0.000196s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ke_service_test_log` `l` LEFT JOIN `ke_user` `u` ON `u`.`id`=`l`.`user_id` LEFT JOIN `ke_service` `s` ON `s`.`id`=`l`.`service_id` LEFT JOIN `ke_service_test` `t` ON `t`.`id`=`l`.`service_test_id` LEFT JOIN `ke_order` `o` ON `o`.`id`=`l`.`order_id` LIMIT 1 [ RunTime:0.000607s ]
+[ sql ] [ SQL ] SELECT `l`.*,u.phone as user_text,s.name as service_text,t.name as service_test_text,o.order_no as order_no,o.status as order_status FROM `ke_service_test_log` `l` LEFT JOIN `ke_user` `u` ON `u`.`id`=`l`.`user_id` LEFT JOIN `ke_service` `s` ON `s`.`id`=`l`.`service_id` LEFT JOIN `ke_service_test` `t` ON `t`.`id`=`l`.`service_test_id` LEFT JOIN `ke_order` `o` ON `o`.`id`=`l`.`order_id` LIMIT 0,10 [ RunTime:0.000427s ]

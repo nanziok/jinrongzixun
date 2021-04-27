@@ -20,7 +20,7 @@ class Index extends Controller {
      * @url /api/index/indextpl
      * @method get
      * @return news:首页文章@
-     * @news title:标题 content:内容（富文本） add_time:时间戳（秒）
+     * @news id:ID title:标题 content:内容（富文本） add_time:时间戳（秒）
      * @return swipers:首页幻灯片@
      * @swipers title:标题 img:图片地址
      *
@@ -29,8 +29,16 @@ class Index extends Controller {
      * @throws \think\exception\DbException
      */
     public function indextpl(){
-         $news = Db::name("article")->where("cat_id",1)->order("listorder desc")->limit(0,6)->select();
-         $swipers = Db::name("guanggao")->where("cat_id",1)->order("listorder desc")->limit(0,4)->select();
+         $news = Db::name("article")->where("cat_id",1)
+             ->field("id,title,content,add_time")
+             ->order("listorder desc")
+             ->limit(0,6)
+             ->select();
+         $swipers = Db::name("guanggao")->where("cat_id",1)
+             ->field("title,img")
+             ->order("listorder desc")
+             ->limit(0,4)
+             ->select();
          $this->result(compact('news','swipers'),1,"首页模板数据",'json');
     }
 
@@ -43,12 +51,16 @@ class Index extends Controller {
      * @param name:page type:int require:0 default:1 desc:页码
      * @param name:page_size type:int require:0 default:10 desc:页长度
      * @return list:资讯列表@
-     * @list title:标题 content:内容（富文本） add_time:时间戳（秒）
+     * @list id:ID title:标题 content:内容（富文本） add_time:时间戳（秒）
      */
     public function new_list(){
         $page_size=input("page_size",10,"int");
         $page=input("page",1,"int");
-        $list = Db::name("article")->where("cat_id",1)->order("listorder desc")->page($page,$page_size)->select();
+        $list = Db::name("article")->where("cat_id",1)
+            ->field("id,title,content,add_time")
+            ->order("listorder desc")
+            ->page($page,$page_size)
+            ->select();
         $this->result(compact('count','list'),1,'资讯列表', 'json');
     }
 
@@ -59,6 +71,7 @@ class Index extends Controller {
      * @url /api/index/article_info
      * @method get
      * @param name:id type:int require:1 default:0 desc:文章id,不传的时候返回code=0
+     * @return id:ID
      * @return title:标题
      * @return content:内容（富文本）
      * @return add_time:时间戳（秒）
@@ -66,7 +79,7 @@ class Index extends Controller {
     public function article_info(){
         $id = input("id",0,"int");
         if(intval($id)>0){
-            $info = Db::name("article")->where("id",$id)->find();
+            $info = Db::name("article")->where("id",$id)->field("id,title,content,add_time")->find();
             $this->result($info,1,'信息通告详情', 'json');
         }
         $this->result('',0,'信息通告详情', 'json');
@@ -81,7 +94,7 @@ class Index extends Controller {
      * @param name:page type:int require:0 default:1 desc:页码
      * @param name:page_size type:int require:0 default:10 desc:页长度
      * @return list:金融咨询师列表@
-     * @list id:咨询师id name:名称 tags:标签 image:图片 price:价格
+     * @list id:咨询师id name:名称 tags:标签 image:图片 content:介绍（富文本） price:价格
      */
     public function tech_list(){
         $page_size=input("page_size",10,"int");
