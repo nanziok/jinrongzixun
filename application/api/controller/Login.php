@@ -29,7 +29,7 @@ class Login extends Controller
             'secret'    => $config["wechat_mp_secret"],
             'response_type' =>  'array',
             'log' => [
-                'level' => 'debug',
+                'level' => 'error',
                 'file'  => RUNTIME_PATH . 'log/'.date('Ymd').'/wechat_debug.log',
             ],
         ];
@@ -38,68 +38,94 @@ class Login extends Controller
 
     /**
      * @title 微信小程序登录
-     * @description 小程序段调用wx.login(),wx.getUserInfo()之后，发起登陆
+     * @description 小程序段调用wx.login()仅传送code参数尝试静默登录, 如果code=1002需要wx.getUserInfo()之后把参数iv|rawData|signature|encryptedData一并传递，再次尝试登陆
      * @url /api/login/login
      * @author 开发者
      * @method POST
      * @param name:code type:string require:1 default: other: desc:wx.login()接口获得code
-     * @param name:iv type:string require:1 default: other: desc:wx.getUserInfo()接口获得
-     * @param name:rawData type:string require:1 default: other: desc:wx.getUserInfo()接口获得
-     * @param name:signature type:string require:1 default: other: desc:wx.getUserInfo()接口获得
-     * @param name:encryptedData type:string require:1 default: other: desc:wx.getUserInfo()接口获得加密字符串
+     * @param name:iv type:string require:0 default: other: desc:wx.getUserProfile()接口获得
+     * @param name:rawData type:string require:0 default: other: desc:wx.getUserProfile()接口获得
+     * @param name:signature type:string require:0 default: other: desc:wx.getUserProfile()接口获得
+     * @param name:encryptedData type:string require:0 default: other: desc:wx.getUserProfile()接口获得加密字符串
      * @param name:inviteCode type:int require:0 default:0 other desc:邀请码，邀请人的id
+     * @return username:
+     * @return phone:
+     * @return headimg:
+     * @return status:
+     * @return nickname:
+     * @return token:注意保存，登陆后全局使用
      * @throws \EasyWeChat\Kernel\Exceptions\DecryptException
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidConfigException
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
+     *
      */
     public function login(){
-        $js_code = input("jscode","");
-        $rawData = input("rawDat","");
-        $sessionKey = input("sessionKey","");
-        $encryptedData = input('encryptedData');
-        $iv = input("in","");
+        $js_code = input("code","");
+        $rawData = input("rawData","");
+        $encryptedData = input('encryptedData', '');
+        $iv = input("iv","");
         $signature = input("signature","");
-        $inviteCode = input("inviteCode",0, "int");
+        $inviteCode = input("inviteCode","");
+
         try{
             Db::startTrans();
+            if($js_code == ''){
+                throw new Exception("code不能为空");
+            }
             //判断邀请人是否存在 ? 是不是应该判断
-            $invite_user_info = Db::name("user")->where("id",$inviteCode)->find();
-            if(empty($invite_user_info)){
-                $inviteCode = 0;   //？？？？？？？？
-                throw new Exception("邀请人信息有误");
+            $from_id = 0;
+            if(!empty($inviteCode)){
+                $invite_user_info = Db::name("user")->where("inviteCode", $inviteCode)->find();
+                if(!empty($invite_user_info)){
+                    $from_id = $invite_user_info["id"];   //？？？？？？？？
+                }else{
+//                    throw new Exception("未找到用户数据");
+                }
+            }else{
+//                throw new Exception("邀请码未填写");
             }
             $session = $this->app->auth->session($js_code);
-            if($session["code "]!=0){
+            if(array_key_exists("errcode", $session)){
                 throw new Exception("获得session_key失败");
             }
-            $signature2 = sha1($rawData . $sessionKey);
-            if ($signature2 !== $signature) {
-                throw new Exception("验签失败");
-            }
-            $userInfo = $this->app->encryptor->decryptData($session['session_key'], $iv, $encryptedData);
-            $temp_array = [
-                "openid"   =>  $userInfo["openId"],
-                "unionid"  =>  in_array("unionid",$userInfo) ? $userInfo["unionid"] : "",
-                "platform" =>  'wxmp',
-                "user_info" =>  json_encode($userInfo),
-                "create_time" =>  time()
-            ];
-            $if_exist = Db::name("third")->where("openid",$temp_array["openid"])->where("platform",$temp_array["platform"])->find();
+            $openid = $session["openid"];
+            $unionid = in_array("unionid", $session) ? $session["unionid"] : "";
+            $platform = "wxmp";
+            $if_exist = Db::name("third")->where(compact("openid","unionid","platform"))->find();
             if(empty($if_exist)) {
+                if(empty($iv) || empty($rawData) || empty($encryptedData) || empty($signature)){
+                    throw new Exception("用户未注册,需要获得用户详情", 1002);
+                }
+                $signature2 = sha1($rawData . $session["session_key"]);
+                if (strcmp($signature2, $signature) != 0) {
+                    throw new Exception("验签失败");
+                }
+                $userInfo = $this->app->encryptor->decryptData($session['session_key'], $iv, $encryptedData);
+                $temp_array = [
+                    "openid"   =>  $session["openid"],
+                    "unionid"  =>  in_array("unionid", $userInfo) ? $userInfo["unionid"] : "",
+                    "platform" =>  'wxmp',
+                    "user_info" =>  json_encode($userInfo),
+                    "create_time" =>  time()
+                ];
+
+
                 //创建新用户
                 $user_new = [
-                    "phone"=>"",
-                    "password"=>$this->getRandStr(8),
-                    "headimg"=> $userInfo["avatarUrl"],
+                    "phone"   =>"",
+					"nickname"=> $userInfo["nickName"],
+                    "password"=> md5($this->getRandStr(8)),
+                    "headimg" => $userInfo["avatarUrl"],
                     "username"=> "",
                     "realname"=> "",
 //                    "sex"=> "",
 //                    "age"=> "",
-                    "status"=>1,
-                    "from_id"=>$inviteCode,
-                    "add_time"=>time()
+                    "status"  => 1,
+                    "from_id" => $from_id,
+                    "add_time"=> time(),
+                    "inviteCode"=> $this->create_inviteCode()
                 ];
                 $user_id = Db::name("user")->insertGetId($user_new);
                 if($user_id ===  false){
@@ -112,13 +138,13 @@ class Login extends Controller
                     throw new Exception("存储三方登录信息失败");
                 }
                 //新增token
-                $ret_token = Db::name("token")->insert([
+                $ret_token = Db::name("user_token")->insert([
                     "user_id"  =>  $user_id,
-                    "token"  =>  $this->create_token(18, 'u'.$user_id),
+                    "token"  =>  $this->create_token(30, 'u'.$user_id),
                     "expires_in" =>  30*24*60*60,
                     "create_time" => time()
                 ]);
-                if ($ret_token === false){
+                if (!$ret_token){
                     throw new Exception("更新token失败");
                 }
             }else{
@@ -126,25 +152,30 @@ class Login extends Controller
                 $user_id = $if_exist["user_id"];
                 $user_name = Db::name("user")->where("id", $user_id)->value("username");
                 $new_token = $this->create_token(18, $user_name);
-                $ret_token = Db::name("token")->where("user_id", $user_id)->updat(["token"=>$new_token,"create_time"=>time()]);
-                if ($ret_token === false){
+                $ret_token = Db::name("user_token")->where("user_id", $user_id)->update(["token"=>$new_token,"create_time"=>time()]);
+                if (!$ret_token){
                     throw new Exception("更新token失败");
                 }
             }
             $user_info = Db::name("user")->alias("u")
                 ->join("ke_user_token t","t.user_id=u.id","left")
                 ->where("u.id",$user_id)
-                ->field("u.*,t.token")
-                ->find();
+                ->field("u.id,u.username,u.phone,u.headimg,u.status,u.nickname,t.token")
+                ->findOrFail();
             Db::commit();
-            $params = [
-                "from_id" => $inviteCode,
-            ];
-            Queue::push("app\job\User@userInvite",$params);
+            if($from_id > 0) {
+                $params = [
+                    "from_id" => $from_id,
+                ];
+                Queue::push("app\job\User@userInvite", $params, 'userInvite');
+            }
             $this->result($user_info,1,'登录成功','json');
         }catch (Exception $e){
             Db::rollback();
-            $this->result("",0,"登录失败".$e->getMessage(),'json');
+            if($e->getCode() == 1002) {
+                $this->result("", 1002, "登录失败：" . $e->getMessage() . '行：' . $e->getLine() . '文件：' . $e->getFile(), 'json');
+            }
+            $this->result("", 0, "登录失败：" . $e->getMessage() . '行：' . $e->getLine() . '文件：' . $e->getFile(), 'json');
         }
     }
 
@@ -154,7 +185,9 @@ class Login extends Controller
      * @return string
      */
     private function getRandStr($len) {
-        $chars = array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k","l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v","w", "x", "y", "z","0", "1", "2","3", "4", "5", "6", "7", "8", "9");
+        $chars = array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k","l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v","w", "x", "y", "z",
+            "0", "1", "2","3", "4", "5", "6", "7", "8", "9",
+            "A","B","C","D","E","F","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
         $charsLen = count($chars) - 1;
         shuffle($chars);
         $output = "";
@@ -170,6 +203,21 @@ class Login extends Controller
      * @return false|string
      */
     public function create_token($length=18, $user_name=""){
-        return substr(md5($user_name . time()),3, $length);
+		$randStr = $this->getRandStr(6);
+        $token = substr(md5($user_name . time() . $randStr), 3, $length);
+		if(Db::name("user_token")->where("token",$token)->find()){
+			return $this->create_token($length, $user_name);
+		}else{
+			return $token;
+		}
+    }
+
+    public function create_inviteCode(){
+        $randStr = $this->getRandStr(6);
+        if(Db::name("user")->where("inviteCode", $randStr)->find()){
+            return $this->create_inviteCode();
+        }else{
+            return $randStr;
+        }
     }
 }

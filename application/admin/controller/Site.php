@@ -16,7 +16,7 @@ class Site extends Base {
 	    
 	    //今日注册数
 		$where['add_time'] = ['between',[strtotime($begintime),strtotime($endtime)]];
-        $num1 = Db::name('user_fabu')->where($where)->count();
+        $num1 = Db::name("user")->count();
 		$num2 = Db::name('user')->where($where)->count();
 	    $this->assign('num1',$num1);
 	    $this->assign('num2',$num2);
@@ -44,7 +44,7 @@ class Site extends Base {
 			$month = $a<10?'0'.$a:$a;
 		    $where['FROM_UNIXTIME(add_time,\'%y-%m\')'] = $year.'-'.$month;
 		    $count = Db::name('user')->where($where)->count();
-		    $count1 = Db::name('user_fabu')->where($where)->count();
+		    $count1 = Db::name('user')->where($where)->where("from_id","neq",0)->count();
 		    
             array_push($member_arr,$count);
             array_push($goods_arr,$count1);
@@ -54,7 +54,7 @@ class Site extends Base {
 		 $ru[0]['data'] = $member_arr;
 		 $this->assign("data1",json_encode($ru));
 		 $ru1[0]['color'] = '#009688';
-		 $ru1[0]['name'] = '会员发布信息量';
+		 $ru1[0]['name'] = '会员邀请注册量';
 		 $ru1[0]['data'] = $goods_arr;
          $this->assign("data2",json_encode($ru1));
 

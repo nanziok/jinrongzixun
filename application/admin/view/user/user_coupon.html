@@ -54,6 +54,10 @@
 {{d.fee}}
 {{#  }  }}
 </script>
+<script type="text/html" id="img">
+    <img src="{{d.user_headimg}}" style="width: 38px;height:38px;" title="{{d.user_username}}"/>
+    <p>{{d.user_text}}</p>
+</script>
 <script>
     var jiazai;
     var table;
@@ -74,13 +78,13 @@
                 elem: '#demo',
                 hide:false,
                 page:true,
-                limit:20,
+                limit:10,
                 defaultToolbar:false,
                 url: "{:url('couponList')}", //数据接口
                 method: 'post',
                 cols: [[ //表头
                     {field: 'id', title: '优惠券ID',width:100,align:'center'},
-                    {field: 'user_text', title:'会员手机号', width:200, templet: '#img', unresize: true,align:'center'},
+                    {field: 'user_text', title:'会员', width:200, templet: '#img', unresize: true,align:'center'},
                     {field: 'name', title: '优惠券名',width:220,align:'center'},
                     {field: 'type_text', title: '类型', align:'center'},
                     {field: 'fee', title: '券面值', templet:'#rule', align: 'center'},
@@ -101,21 +105,6 @@
             };
         });
 
-
-        form.on('switch(sexDemo)', function(obj){
-            var id = this.value;
-            var value = obj.elem.checked;
-            if(value == true){
-                status = 1;
-            }else{
-                status = 2;
-            }
-            var arr = {};
-            arr.id = id;
-            arr.status = status;
-            arr.table = 'user';
-            set_data(arr);
-        });
 
     });
     function add(){

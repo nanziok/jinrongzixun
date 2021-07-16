@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:88:"F:\Work space\jinrongzixun\public_html/../application/admin\view\article\index_list.html";i:1570946880;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:88:"F:\Work space\jinrongzixun\public_html/../application/admin\view\article\index_list.html";i:1619519387;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +91,7 @@ layui.use('table', function(){
   });
 
    form.on('switch(sexDemo)', function(obj){
-      var id = this.value;
+      var id = this.data();
 	  var value = obj.elem.checked;
 	  if(value == true){
 	    is_show = 1;

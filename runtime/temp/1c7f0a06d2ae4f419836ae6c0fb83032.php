@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"F:\Work space\jinrongzixun\public_html/../application/admin\view\xitong\index.html";i:1619418214;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"F:\Work space\jinrongzixun\public_html/../application/admin\view\xitong\index.html";i:1619574315;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,7 +121,7 @@
 			</div>
 		  </div>
 		  <div class="layui-form-item">
-			<label class="layui-form-label">微信支密钥：</label>
+			<label class="layui-form-label">微信支付密钥：</label>
 			<div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
 				<input type="text" name="wechat_pay_key" value="<?php echo $data['wechat_pay_key']; ?>" placeholder="请输入微信支付密钥" class="layui-input">
 			</div>

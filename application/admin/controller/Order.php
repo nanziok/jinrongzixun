@@ -36,9 +36,12 @@ class Order extends Base
             }
             $count = Db::name("order")->alias("o")->where($condition)->count();
             $list = Db::name("order")->alias("o")
-                ->join("ke_service s", "s.id=o.service_id","left")
+                //->join("ke_service s", "s.id=o.service_id","left")
                 ->join("ke_user u", "u.id=o.user_id","left")
-                ->where($condition)->field("o.*, s.name as service_text,u.phone as user_text")->paginate(10,false,["query"=>input()]);
+                ->where($condition)
+                ->field("o.*, u.username as user_username, u.headimg as user_headimg, u.nickname as user_nickname")
+                ->order("o.id desc")
+                ->paginate(10,false,["query"=>input()]);
             $data = $list->items();
             if(!empty($data)){
                 $data = array_map(function ($item){
@@ -142,8 +145,10 @@ class Order extends Base
                 ->join("ke_service s", "s.id=l.service_id", "left")
                 ->join("ke_service_test t","t.id=l.service_test_id","left")
                 ->join("ke_order o","o.id=l.order_id","left")
-                ->field("l.*,u.phone as user_text, s.name as service_text, t.name as service_test_text,o.order_no as order_no, o.status as order_status")
-                ->where($condition)->paginate(10,false,["query"=>input()]);
+                ->field("l.*, u.username as user_username, u.headimg as user_headimg, u.nickname as user_nickname, t.name as service_test_text,o.service_text, o.order_no as order_no, o.status as order_status")
+                ->where($condition)
+                ->order("l.id desc")
+                ->paginate(10,false,["query"=>input()]);
             $data = $list->items();
             if (!empty($data)){
                 $data = array_map(function ($item){
@@ -175,15 +180,18 @@ class Order extends Base
         if(request()->isPost()){
             $row = db::name("service_test_log")->where("id", $id)->find();
             $data = input();
+            $data["review_time"] = time();
+            $data["status"] = 2;
             $ret = Db::name("service_test_log")->strict(false)->where("id",$id)->update($data);
             if($ret === false){
                 $this->error("编辑失败");
             }
             $params = [
-                "from_id" => $row["user_id"],
-                "test_log_id" => $data["id"]
+                "user_id" => $row["user_id"],
+                "test_log_id" => $data["id"],
+                "create_time" => $row["create_time"],
             ];
-            Queue::push("app\job\User@testLogReply",$params);
+
             $this->success("编辑成功");
         }else{
 
@@ -191,14 +199,14 @@ class Order extends Base
                 ->join("ke_user u","u.id=l.user_id","left")
                 ->join("ke_service s","s.id=l.service_id","left")
                 ->where("l.id", $id)
-                ->field("l.id, l.content, l.notes, l.create_time, l.status, l.service_id, l.service_text, u.phone as user_text")
+                ->field("l.id, l.content, l.notes, l.create_time, l.status, l.service_id, l.service_text, u.nickname as user_text")
                 ->find();
 //            $row["content"] = json_decode($row["content"], true);
             if($row["service_id"] === 0){
                 $row["service_text"] = "基金咨询";
             }
             $this->assign("row", $row);
-            return view();
+            return view('wdl_edit_log');
         }
     }
     public function kyc_edit_log(){

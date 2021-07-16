@@ -36,7 +36,7 @@
   <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="del">删除</a>
 </script>
 <script type="text/html" id="switchTpl">
-  <input type="checkbox" name="status" value="1" lay-skin="switch" lay-text="显示|隐藏" lay-filter="sexDemo" {{ d.status == 1 ? 'checked' : '' }}>
+  <input type="checkbox" name="status" value="1" data-id="{{d.id}}" lay-skin="switch" lay-text="显示|隐藏" lay-filter="sexDemo" {{ d.status == 1 ? 'checked' : '' }}>
 </script>
 <script type="text/html" id="img">
   <img src="{{d.image}}" onclick="showImg({{d.id}},0,'service','id','image')" style='height:50px;cursor:pointer;'>
@@ -72,10 +72,10 @@ layui.use('table', function(){
 		cols: [[ //表头
 		  {field: 'id', title: 'ID', width:100, align:'center'},
 		  {field: 'name', title: '名称',width:180, align:'center'},
-		  {field: 'image', title: '图标',width:120, align:'center', templet: '#img'},
+		  // {field: 'image', title: '图标',width:120, align:'center', templet: '#img'},
 		  {field: 'tags', title: '标签',width:240, align:'center',templet: '#for-tags'},
 		  {field: 'price', title: '价格',width:120, align:'center'},
-		  {field: 'status', title:'状态', templet: '#switchTpl', unresize: true,align:'center'},
+		  {field: 'status', title:'状态', templet: '#switchTpl', unresize: true,width:180, align:'center'},
 		  {field: 'create_time', title:'添加时间', width:200, align:'center'},
 		  {field: 'weigh', title: '排序', width:100, align:'center'},
 		  {fixed: 'right', title:'操作', align:'center', toolbar: '#barDemo'}
@@ -96,7 +96,7 @@ layui.use('table', function(){
   });
 
    form.on('switch(sexDemo)', function(obj){
-      var id = this.value;
+      var id = $(this).data("id");
 	  var value = obj.elem.checked;
 	  if(value == true){
 	    status = 1;

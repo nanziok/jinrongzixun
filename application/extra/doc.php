@@ -25,10 +25,10 @@ return [
     ],
     'public_header' => [
         //全局公共头部参数
-        ['name'=>'AUTH', 'require'=>1, 'default'=>'', 'desc'=>'token,需要登录页面携带']
+        ['name'=>'AUTH', 'require'=>1, 'default'=>'125f0a4415f01833ca', 'desc'=>'token,需要登录页面携带']
     ],
     'public_param' => [
-        //全局公共请求参数，设置了所以的接口会自动增加次参数
+        //全局公共请求参数，设置了所以的接口会自动增加参数
         //如：['name'=>'token', 'type'=>'string', 'require'=>1, 'default'=>'', 'other'=>'' ,'desc'=>'验证（全局）')']
     ],
 ];

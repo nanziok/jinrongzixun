@@ -34,6 +34,10 @@
 <script type="text/html" id="barDemo">
   <a class="layui-btn layui-btn-xs" lay-event="edit_id">点击操作</a>
 </script>
+<script type="text/html" id="user_img">
+	<img src="{{d.user_headimg}}" style="width: 38px;height:38px;" title="{{d.user_username}}"/>
+	<p>{{d.user_text}}</p>
+</script>
 <script type="text/html" id="img">
 	     {{#  if(d.img != ''){ }}
 	      {{# layui.each(d.img, function(index, item){ }}
@@ -65,10 +69,10 @@ layui.use('table', function(){
 		url: "{:url('wdl_index')}?status={$status}", //数据接口
 		cols: [[ //表头
 		  {field: 'id', title: '投诉ID',width:150,align:'center'},
-		  {field: 'userphone', title: '注册电话',width:150,align:'center'},
-		  {field: 'phone', title: '预留电话',width:150,align:'center'},
-		  {field: 'content', title: '投诉内容',align:'center'},
-		  {field: 'img', title: '相关图片',width:200,templet: '#img', unresize: true,align:'center'},
+		  {field: 'user_text', title: '用户',templet:'#user_img',width:150,align:'center'},
+		  // {field: 'phone', title: '预留电话',width:150,align:'center'},
+		  {field: 'content', title: '投诉内容',templet:function(d){return d.content.substr(0,120);},align:'center'},
+		  // {field: 'img', title: '相关图片',width:200,templet: '#img', unresize: true,align:'center'},
 		  {field: 'add_time', title: '添加时间',width:200,align:'center'},
 		  {field: 'status', title: '状态',width:150,align:'center'},
 		  {field: 'mark', title: '处理备注',align:'center'},

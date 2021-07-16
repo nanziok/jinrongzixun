@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:89:"F:\Work space\jinrongzixun\public_html/../application/admin\view\guanggao\index_list.html";i:1616658308;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:89:"F:\Work space\jinrongzixun\public_html/../application/admin\view\guanggao\index_list.html";i:1620198291;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,7 +82,6 @@ layui.use('table', function(){
 		  {field: 'type', title: '广告类型',align:'center'},
 		  {field:'img', title:'缩略图', width:120, templet: '#img', unresize: true,align:'center'},
 		  {field:'is_show', title:'状态', width:120, templet: '#switchTpl', unresize: true,align:'center'},
-		  {field:'is_login', title:'登录设置', width:150, templet: '#is_login', unresize: true,align:'center'},
 		  {field: 'listorder', title: '排序',align:'center'},
 		  {fixed: 'right', title:'操作',width:200, align:'center', toolbar: '#barDemo'}
 		]],

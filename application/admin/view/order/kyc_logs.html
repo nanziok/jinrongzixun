@@ -22,19 +22,24 @@
         &nbsp;&nbsp;用户： <div class="layui-inline"> <input class="layui-input" id="user_name" placeholder="搜索用户"/></div>
         &nbsp;&nbsp;咨询师： <div class="layui-inline"> <input class="layui-input" id="tech_name" placeholder="搜索咨询师"/></div>
         &nbsp;&nbsp;状态：<div class="layui-inline">
-        <select id="status">
-            <option value="">请选择</option>
-            <option value="1">未解决</option>
-            <option value="2">已解决</option>
-        </select>
+<!--        <select id="status">-->
+<!--            <option value="">请选择</option>-->
+<!--            <option value="1">未解决</option>-->
+<!--            <option value="2">已解决</option>-->
+<!--        </select>-->
     </div>
         <button class="layui-btn layui-btn-sm" onclick="chongzai();">搜索</button>
     </div>
 </div>
 <table id="demo" lay-filter="test" class="layui-hide"></table>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="edit_id">处理</a>
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="del">删除</a>
+<!--    <a class="layui-btn layui-btn-xs" lay-event="edit_id">处理</a>-->
+<!--    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="del">删除</a>-->
+<a class="layui-btn layui-btn-xs" lay-event="edit_id">查看</a>
+</script>
+<script type="text/html" id="img">
+    <img src="{{d.user_headimg}}" style="width: 38px;height:38px;" title="{{d.user_username}}"/>
+    <p>{{d.user_text}}</p>
 </script>
 <script type="text/html" id="switchTpl">
     <input type="checkbox" name="status" value="1" lay-skin="switch" lay-text="未处理|已处理" lay-filter="sexDemo" {{ d.status == 2 ? 'checked' : '' }}>
@@ -45,8 +50,6 @@
     {{#  }else{  }}
     已解决
     {{#  }  }}
-
-
 </script>
 
 <script type="text/html" id="order_status">
@@ -81,7 +84,7 @@
                 cols: [[ //表头
                     {field: 'id', title: 'ID',width:80,align:'center'},
                     {field: 'order_no', title: '订单编号',align:'center'},
-                    {field: 'user_text', title: '下单用户',align:'center'},
+                    {field: 'user_text', title: '下单用户',templet:'#img',align:'center'},
                     {field:'service_text', title:'咨询师', align:'center'},
                     {field:'service_test_text', title:'问卷名称', align:'center'},
                     {field:'create_time', width:160, title:'提交时间', align:'center'},
@@ -97,7 +100,7 @@
         table.on('tool(test)', function(obj){
             switch(obj.event){
                 case 'edit_id':
-                    open_window(obj.data.id,"wdl_edit_log",'答疑','80%','75%');
+                    open_window(obj.data.id,"wdl_edit_log",'答疑','75%','50%');
                     break;
                 case 'del':
                     del(obj.data.id,"wdl_del");

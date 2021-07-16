@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"F:\Work space\jinrongzixun\public_html/../application/admin\view\user\user_coupon.html";i:1619509738;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"F:\Work space\jinrongzixun\public_html/../application/admin\view\user\user_coupon.html";i:1619519510;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,21 +102,6 @@
             };
         });
 
-
-        form.on('switch(sexDemo)', function(obj){
-            var id = this.value;
-            var value = obj.elem.checked;
-            if(value == true){
-                status = 1;
-            }else{
-                status = 2;
-            }
-            var arr = {};
-            arr.id = id;
-            arr.status = status;
-            arr.table = 'user';
-            set_data(arr);
-        });
 
     });
     function add(){

@@ -25,9 +25,9 @@ class Guanggao extends Base {
 		$list = Db::name("guanggao") ->alias('g')->join('guanggao_cat c','c.id=g.cat_id','left')->field('g.*,c.name')->where($where)->order('g.id desc')->paginate(15,false,['query'=>input()]);
 		$data = $list->items();
 		if($data){
-			$type= array("0"=>"未设置","1"=>"菜单链接","2"=>"案例","3"=>"网点","6"=>"外链");
+			$type= array("0"=>"未设置","1"=>"菜单链接","2"=>"文章","3"=>"咨询师","9"=>"外链");
 			foreach($data as $k=>$v){
-				$data[$k]['type'] = $type[$v['type']];
+				$data[$k]['type'] = array_key_exists($v["type"], $type) ? $type[$v['type']] : '类型未设置';
 				$data[$k]['add_time'] = d($v['add_time']);
 			}
 		}

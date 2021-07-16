@@ -16,8 +16,13 @@ class Tousu extends Base {
 		if($status){
 			$where['y.status'] = $status;
 		}
-	    $count = Db::name("user_yijian") ->alias('y')->join('user u','u.id=y.user_id','left')->field('y.*,u.phone as userphone')->where($where)->count();
-		$list = Db::name("user_yijian") ->alias('y')->join('user u','u.id=y.user_id','left')->field('y.*,u.phone  as userphone')->where($where)->order('y.id desc')->paginate(20,false,['query'=>input()]);
+	    $count = Db::name("user_yijian")->alias('y')->join('user u','u.id=y.user_id','left')->field('y.*,u.phone as userphone')->where($where)->count();
+		$list = Db::name("user_yijian")->alias('y')
+            ->join('user u','u.id=y.user_id','left')
+            ->field('y.*,u.username  as user_username,u.headimg as user_headimg, u.nickname as user_nickname')
+            ->where($where)
+            ->order('y.id desc')
+            ->paginate(20,false,['query'=>input()]);
 		$data = $list->items();
 		if($data){
 			foreach($data as $k=>$v){

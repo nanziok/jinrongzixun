@@ -90,7 +90,7 @@ layui.use('table', function(){
   });
 
    form.on('switch(sexDemo)', function(obj){
-      var id = this.value;
+      var id = obj.value;
 	  var value = obj.elem.checked;
 	  if(value == true){
 	    is_show = 1;

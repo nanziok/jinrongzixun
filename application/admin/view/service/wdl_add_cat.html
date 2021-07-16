@@ -45,16 +45,16 @@
             <input type="text" name="name" placeholder="请输入咨询师名称" class="layui-input must">
         </div>
     </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">头像</label>
-        <div class="layui-input-block"><span class="require-field">*</span>
-            <input type="text" name="image" placeholder="请上传头像" id="image_upload" class="layui-input must layui-hide">
-            <button type="button" class="layui-btn" id="uploadimage">
-                <i class="layui-icon">&#xe67c;</i>上传图片
-            </button>
-            <p style="margin-top: 10px"><img class="layui-upload-img" id="image-preview" /></p>
-        </div>
-    </div>
+<!--    <div class="layui-form-item">-->
+<!--        <label class="layui-form-label">头像</label>-->
+<!--        <div class="layui-input-block"><span class="require-field">*</span>-->
+<!--            <input type="text" name="image" placeholder="请上传头像" id="image_upload" class="layui-input must layui-hide">-->
+<!--            <button type="button" class="layui-btn" id="uploadimage">-->
+<!--                <i class="layui-icon">&#xe67c;</i>上传图片-->
+<!--            </button>-->
+<!--            <p style="margin-top: 10px"><img class="layui-upload-img" id="image-preview" /></p>-->
+<!--        </div>-->
+<!--    </div>-->
     <div class="layui-form-item">
         <label class="layui-form-label">标签</label>
         <div class="layui-input-block">
@@ -67,6 +67,17 @@
         <label class="layui-form-label">内容介绍</label>
         <div class="layui-input-block" style="width:60%;max-height:500px;z-index:0;"><span class="require-field">*</span>
             <textarea class="layui-textarea" id="container" name="content"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">服务周期</label>
+        <div class="layui-input-block" style="width:60%;z-index:99;"><span class="require-field">*</span>
+            <select class="layui-select must" name="service_time" >
+                <option value="">请选择服务周期</option>
+                {foreach name="service_time_list" item="v" key="k"}
+                <option value="{$k}">{$v}</option>
+                {/foreach}
+            </select>
         </div>
     </div>
     <div class="layui-form-item">

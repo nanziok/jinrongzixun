@@ -19,16 +19,24 @@
 .layui-form-pane .layui-input-block{margin-left:160px;width:30%;}
 .layui-form-pane .layui-form-label {width:160px;}
 .require-field{margin-right:-260px;}
+.preview-share_thumb{
+	display: inline-block;
+	width: 120px;
+	height: 120px;
+	background-image: url('/static/manage/images/add_fpic.gif');
+	background-size: cover;
+	cursor: pointer;
+}
 </style>
 <form class="layui-form  layui-form-pane" action="{:url("wdl_edit_do")}" method="post" id="form">
 	<input name="id" type="hidden" value="{$data.id}" />
     <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
 	  <ul class="layui-tab-title">
 		<li class="layui-this">网站设置</li>
-		<li>短信设置</li>
 		<li>微信设置</li>
 		<li>分享设置</li>
 		<li>基金咨询设置</li>
+		<li>KYC设置</li>
 	  </ul>
 	  <div class="layui-tab-content" style="min-height: 100px;">
 		<div class="layui-tab-item layui-show">
@@ -74,26 +82,7 @@
 		</div>
 
 
-		<div class="layui-tab-item">
-		     <div class="layui-form-item">
-			    <label class="layui-form-label">互亿无线账号：</label>
-			    <div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
-			      <input type="text" name="msg_zhanghao" value="{$data.msg_zhanghao}" placeholder="请输入互亿无线账号" class="layui-input">
-			    </div>
-			 </div>
-			 <div class="layui-form-item">
-			    <label class="layui-form-label">互亿无线秘钥：</label>
-			    <div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
-			      <input type="text" name="msg_secret" value="{$data.msg_secret}" placeholder="请输入互亿无线秘钥" class="layui-input">
-			    </div>
-			 </div>
-			 <div class="layui-form-item">
-			    <label class="layui-form-label">发送验证码模板：</label>
-			    <div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
-			      <input type="text" name="msg_code" value="{$data.msg_code}" placeholder="请输入发送验证码模板" class="layui-input">
-			    </div>
-			 </div>
-		</div>
+
 		<div class="layui-tab-item">
 		  <div class="layui-form-item">
 			  <label class="layui-form-label">微信小程序APPID：</label>
@@ -120,17 +109,24 @@
 			</div>
 		  </div>
 		  <div class="layui-form-item">
-			<label class="layui-form-label">微信支密钥：</label>
+			<label class="layui-form-label">微信支付密钥：</label>
 			<div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
 				<input type="text" name="wechat_pay_key" value="{$data.wechat_pay_key}" placeholder="请输入微信支付密钥" class="layui-input">
 			</div>
 		 </div>
 		</div>
-		<div class="layui-tab-item" style="height: 380px;">
+		<div class="layui-tab-item" style="">
 			<div class="layui-form-item">
 				<label class="layui-form-label">分享规则简述：</label>
 				<div class="layui-input-block" style="min-width: 500px;">
 					<textarea style="display: none;" id="share_rule_des" name="share_rule_des">{$data.share_rule_des}</textarea>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">自定义分享图：</label>
+				<div class="layui-input-block" style="min-width: 500px;">
+					<input type="hidden" id="share_thumb" name="share_thumb" value="{$data.share_thumb}" />
+					<img class="preview-share_thumb" id="upload_share_thumb" {notempty name="$data.share_thumb"}src="{$data.share_thumb}"{/notempty}/>
 				</div>
 			</div>
 		</div>
@@ -186,6 +182,41 @@
 					<input type="number" name="jijin_fee_ladder6" value="{$data.jijin_setting.jijin_fee_ladder6}" placeholder="请输入阶梯收费标准" class="layui-input">
 				</div>
 			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">基金服务时间：</label>
+				<div class="layui-input-block"><span class="require-field">请勿擅自更改</span>
+					<select name="jijin_service_time" lay-filter="jijin_switch">
+						<option value="year" {if $data.jijin_setting.jijin_service_time eq 'year'}selected{/if}>一年</option>
+						<option value="month" {if $data.jijin_setting.jijin_service_time eq 'month'}selected{/if}>一个月</option>
+						<option value="week" {if $data.jijin_setting.jijin_service_time eq 'week'}selected{/if}>一周</option>
+						<option value="day" {if $data.jijin_setting.jijin_service_time eq 'day'}selected{/if}>一天</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">金融咨询介绍：</label>
+				<div class="layui-input-block" style="min-width: 500px;">
+					<input type="hidden" id="chat_description" name="chat_description" value="{$data.jijin_setting.chat_description}" />
+					<img class="preview-share_thumb" id="upload_chat_description" {notempty name="$data.jijin_setting.chat_description"}src="{$data.jijin_setting.chat_description}"{/notempty}/>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">基金咨询介绍：</label>
+				<div class="layui-input-block" style="min-width: 500px;">
+					<input type="hidden" id="jijin_description" name="jijin_description" value="{$data.jijin_setting.jijin_description}" />
+					<img class="preview-share_thumb" id="upload_jijin_description" {notempty name="$data.jijin_setting.jijin_description"}src="{$data.jijin_setting.jijin_description}"{/notempty}/>
+				</div>
+			</div>
+		</div>
+	  	<div class="layui-tab-item">
+
+			<div class="layui-form-item">
+				<label class="layui-form-label">金融咨询介绍：</label>
+				<div class="layui-input-block" style="min-width: 500px;">
+					<input type="hidden" id="kyc_top_image" name="kyc_top_image" value="{$data.kyc_top_image}" />
+					<img class="preview-share_thumb" id="upload_kyc_top_image" {notempty name="$data.kyc_top_image"}src="{$data.kyc_top_image}"{/notempty}/>
+				</div>
+			</div>
 		</div>
 	  </div>
 	</div> 
@@ -197,8 +228,8 @@
   </div>
 </form>
 <script>
-layui.use(['element','form','layedit'], function(){
-  var $ = layui.jquery,element = layui.element;
+layui.use(['element','form','layedit','upload'], function(){
+  var $ = layui.jquery,element = layui.element, upload=layui.upload;
   var form = layui.form ,layedit=layui.layedit;
 
 	$("#form_btn").click(function(){
@@ -243,6 +274,47 @@ layui.use(['element','form','layedit'], function(){
 		}
 	});
 
+	//图片上传
+	upload.render({
+		elem: '#upload_share_thumb'
+		,url: '{:url(\'admin/upload/up_do\')}'
+		,multiple: false
+		,done: function(res){
+			//上传完毕
+			$("#share_thumb").val(res.pic);
+			$("#upload_share_thumb").attr("src", res.pic);
+		}
+	});
+	upload.render({
+		elem: '#upload_chat_description'
+		,url: '{:url("admin/upload/up_do")}'
+		,multiple: false
+		,done: function(res){
+			//上传完毕
+			$("#chat_description").val(res.pic);
+			$("#upload_chat_description").attr("src", res.pic);
+		}
+	});
+	upload.render({
+		elem: '#upload_jijin_description'
+		,url: '{:url("admin/upload/up_do")}'
+		,multiple: false
+		,done: function(res){
+			//上传完毕
+			$("#jijin_description").val(res.pic);
+			$("#upload_jijin_description").attr("src", res.pic);
+		}
+	});
+	upload.render({
+		elem: '#upload_kyc_top_image'
+		,url: '{:url("admin/upload/up_do")}'
+		,multiple: false
+		,done: function(res){
+			//上传完毕
+			$("#kyc_top_image").val(res.pic);
+			$("#upload_kyc_top_image").attr("src", res.pic);
+		}
+	});
 
 });
 

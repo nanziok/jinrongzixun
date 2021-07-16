@@ -21,19 +21,20 @@
 	<div class="layui-table-tool">
 	  <div class="layui-table-tool-temp"> 
 		 <div class="demoTable"> 
-			 搜索手机号： <div class="layui-inline"> <input class="layui-input" id="phone" placeholder="请输入"/></div>
+			 搜索昵称： <div class="layui-inline"> <input class="layui-input" id="nickname" placeholder="请输入"/></div>
 			    &nbsp;&nbsp;注册时间：<div class="layui-inline"> <input class="layui-input" id="start_date" value="{:input('start_date')}" placeholder="请输入"/></div>
 			~~&nbsp;<div class="layui-inline"> <input class="layui-input" id="end_date" value="{:input('end_date')}" placeholder="请输入"/></div>
 			 <button class="layui-btn layui-btn-sm" onclick="chongzai();">搜索</button> 
-			 <button class="layui-btn layui-btn-sm layui-right" onclick="add();">添加会员</button> 
-		</div> 
+			 <button class="layui-btn layui-btn-sm layui-right" onclick="add();">添加会员</button>
+		</div>
 	 </div>
 	</div>
 </div>
 <table id="demo" lay-filter="test" class="layui-hide"></table>
 <script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="add_archive"><i class="layui-icon layui-icon-addition"></i>添加档案</a>
   <a class="layui-btn layui-btn-xs" lay-event="coupon_id">赠券</a>
-  <a class="layui-btn layui-btn-xs" lay-event="edit_id">改密</a>
+<!--  <a class="layui-btn layui-btn-xs" lay-event="edit_id">改密</a>-->
   <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="del">删除</a>
 </script>
 <script type="text/html" id="switchTpl">
@@ -76,8 +77,8 @@ layui.use('table', function(){
 		cols: [[ //表头
 		  {field: 'id', title: '会员ID',width:100,align:'center'},
 		  {field:'headimg', title:'头像', width:120, templet: '#img', unresize: true,align:'center'},
-		  {field: 'phone', title: '手机号',width:120,align:'center'},
-		  {field: 'username', title: '昵称',width:200,align:'center'},
+		  {field: 'nickname', title: '昵称',width:120,align:'center'},
+		  {field: 'username', title: '用户名',width:200,align:'center'},
 		  {field: 'sex', title: '性别',width:50,align:'center'},
 
 		  {field: 'realname', title: '真实姓名',align:'center'},
@@ -93,13 +94,17 @@ layui.use('table', function(){
   table.on('tool(test)', function(obj){
 	  switch(obj.event){
 		case 'edit_id':
-		open_window(obj.data.id,"wdl_edit",'编辑会员','50%');
-		break;
+			open_window(obj.data.id,"wdl_edit",'编辑会员','50%');
+			break;
 		case 'del':
-		del(obj.data.id,"wdl_del");
-		break;
+			del(obj.data.id,"wdl_del");
+			break;
 		case 'coupon_id':
 			open_window(obj.data.id, "wdl_add_coupon", "赠送优惠券","60%", "700px");
+			break;
+	    case 'add_archive':
+			open_window(obj.data.id, "wdl_add_archive", "添加档案","70%", "900px");
+			break;
 	  };
   });
 
@@ -125,13 +130,10 @@ layui.use('table', function(){
   }
   function chongzai(){
 		table.reload('demo', {
-		  where: { 
-			age: $("#age").val(),
-			phone:$("#phone").val(),
-			shili:$("#shili").val(),
+		  where: {
+		  	nickname:$("#nickname").val(),
 			start_date:$("#start_date").val(),
 			end_date:$("#end_date").val(),
-			tiaoli:$("#tiaoli").val()
 		  }
 		  ,page: {
 			curr: 1 

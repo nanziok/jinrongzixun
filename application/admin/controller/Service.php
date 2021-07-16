@@ -52,6 +52,7 @@ class Service extends Base
                 $this->success("添加成功");
             }
         }else{
+            $this->serviceTimeList();
             return view();
         }
     }
@@ -71,6 +72,7 @@ class Service extends Base
             $id = input("id",0,"int");
             $row = Db::name("service")->where("id",$id)->find();
             $this->assign("row",$row);
+            $this->serviceTimeList();
             return view();
         }
     }
@@ -117,11 +119,14 @@ class Service extends Base
             ->order("id desc")
             ->paginate(10,false,["query"=>input()]);
         $data = $list->items();
-//        if($data){
-//            foreach($data as $k=>$v){
+        if($data){
+            foreach($data as $k=>$v){
 //                $data[$k]['create_time'] = d($v['create_time']);
-//            }
-//        }
+                if($v["service_id"] == 0){
+                    $data[$k]['service_name'] = '基金咨询';
+                }
+            }
+        }
         echo json_encode(array("code"=>0,'data'=>$data,'message'=>'成功','count'=>$count));
     }
 
@@ -184,10 +189,79 @@ class Service extends Base
     }
 
     public function jijin(){
-        if (request()->isPost()){
-            
+        if (request()->isAjax()){
+            //过滤条件
+            $map = [];
+            $name = input("name", "");
+            $status = input("status", 0, "int");
+            if (!empty($name)){
+                $map["name"] = ["like", "%$name%"];
+            }
+            if(in_array($status, [1,2])){
+                $map["status"] = ["eq", $status];
+            }
+            $count = Db::name("jijin_sub")->where($map)->count();
+            $list = Db::name("jijin_sub")
+                ->where($map)
+                ->order("id desc")
+                ->paginate(10, false, ["query"=>input()]);
+            $data = $list->items();
+            $data = array_map(function($item){
+                $item["create_time"] = d($item["create_time"]);
+                return $item;
+            },$data);
+            echo json_encode(array("code"=>0,'data'=>$data,'message'=>'成功','count'=>$count));
         }else{
             return view();
+        }
+    }
+
+    public function wdl_add_jijin(){
+        if(request()->isPost()){
+            $data = input();
+            $data["status"] = (array_key_exists("status",$data) && in_array($data["status"],[1,2])) ? $data["status"] : 2;
+            $data["create_time"] = time();
+            $ret = Db::name("jijin_sub")->strict(false)->insert($data);
+            if($ret===false){
+                $this->error("添加失败");
+            }else{
+                $this->success("添加成功");
+            }
+        }else{
+            return view();
+        }
+    }
+
+    public function wdl_edit_jijin(){
+        if(request()->isPost()){
+            $data = input();
+            $data["status"] = (array_key_exists("status",$data) && in_array($data["status"],[1,2])) ? $data["status"] : 2;
+            $data["create_time"] = time();
+            $ret = Db::name("jijin_sub")->strict(false)->update($data);
+            if($ret===false){
+                $this->error("编辑失败");
+            }else{
+                $this->success("编辑成功");
+            }
+        }else{
+            $id = input("id",0,"int");
+            $row = Db::name("jijin_sub")->where("id",$id)->find();
+            $this->assign("row",$row);
+            return view();
+        }
+    }
+
+    public function wdl_del_jijin(){
+        if(request()->isAjax()){
+            $id =input("id",0,"int");
+            if(intval($id)<1){
+                $this->error("删除失败");
+            }
+            $ret = Db::name("jijin_sub")->where("id",$id)->delete();
+            if($ret === false){
+                $this->error("删除失败");
+            }
+            $this->success("删除成功");
         }
     }
 
@@ -209,6 +283,16 @@ class Service extends Base
         }catch (Exception $e){
             $this->error("问卷出题有误[". $e->getMessage(). "]，请检查后重试");
         }
+    }
+
+    private function serviceTimeList(){
+        $list = [
+            "year"   =>  "一年",
+            "month"  =>  "一个月",
+            "week"   =>  "一周",
+            "day"    =>  "一天",
+        ];
+        $this->assign("service_time_list", $list);
     }
 
 

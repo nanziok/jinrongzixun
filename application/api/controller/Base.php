@@ -16,7 +16,6 @@ class Base extends Controller{
          exit(json_encode($data));
 	}
 	public function _initialize(){
-		 $this->baseurl = "http://www.xinshiling.cn";
 		 $this->xitong=Db::name("xitong")->where("id=1")->find();
 		 if($this->xitong['app'] == 2){
 		 	$ret['code']= 0;

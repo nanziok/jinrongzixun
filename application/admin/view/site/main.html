@@ -28,25 +28,25 @@
 					<span>快捷方式</span>
 				</div>
 				<ul class="ul_list clearfloat">
-					<li onclick="openurl('{:url('admin/service/index')}');">
-						<img src="/static/manage/images/index/fuwudian.png">
-						<div>服务点管理</div></a>
+					<li onclick="openurl('{:url('admin/service/cat')}');">
+						<i class="layui-icon layui-icon-senior" style="font-size: 30px;"></i>
+						<div>业务管理</div></a>
 					</li>
-					<li onclick="openurl('{:url('admin/user/fabu')}');">
-						<img src="/static/manage/images/index/fabu.png">
-						<div>会员发布</div>
+					<li onclick="openurl('{:url('admin/service/kyc_list')}');">
+						<i class="layui-icon layui-icon-form" style="font-size: 30px;"></i>
+						<div>问卷配置</div>
 					</li>
-					<li onclick="openurl('{:url('admin/anli/index')}');">
-						<img src="/static/manage/images/index/anli.png">
-						<div>案例管理</div>
+					<li onclick="openurl('{:url('admin/order/index')}');">
+						<i class="layui-icon layui-icon-list" style="font-size: 30px;"></i>
+						<div>订单列表</div>
+					</li>
+					<li onclick="openurl('{:url('admin/order/kyc_logs')}');">
+						<i class="layui-icon layui-icon-template" style="font-size: 30px;"></i>
+						<div>问卷记录</div>
 					</li>
 					<li onclick="openurl('{:url('admin/user/index')}');">
-						<img src="/static/manage/images/index/icon4.png">
+						<i class="layui-icon layui-icon-user" style="font-size: 30px;"></i>
 						<div>会员管理</div>
-					</li>
-					<li onclick="openurl('{:url('admin/guanliyuan/index')}');">
-						<img src="/static/manage/images/index/guanliyuan.png">
-						<div>管理员管理</div>
 					</li>
 				</ul>
 			</div>
@@ -58,7 +58,7 @@
 				</div>
 				<ul class="ul_right clearfloat">
 					<li onclick="openurl('{:url('admin/user/fabu')}?start_date={$begintime}&end_date={$endtime}');">
-						<div class="div_1">今日发布</div>
+						<div class="div_1">历史注册</div>
 						<div class="div_2">{$num1}</div>
 					</li>
 					<li onclick="openurl('{:url('admin/user/index')}?start_date={$begintime}&end_date={$endtime}');">
@@ -110,7 +110,7 @@
 				<div class="xtcen fl">
 					<div class="xtlist">
 						<span>网站域名：</span>
-						<span>{$server.host}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" target="_blank"  class="layui-btn layui-btn-danger">app下载地址</a>
+						<span>{$server.host}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                     <div class="xtlist">
 						<span>网站IP：：</span>
@@ -130,7 +130,7 @@
     var data1 = {$data1};
 	var data2 = {$data2};
     var t1 = '{$year}年各月会员注册量';
-    var t2 ='{$year}年各月会员发布量';
+    var t2 ='{$year}年各月会员邀请注册量';
 	Highcharts.setOptions({ 
         colors: ['#058DC7', '#5cb85c'] 
 	 }); 
