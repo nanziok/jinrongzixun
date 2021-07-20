@@ -79,6 +79,7 @@ class Index extends Controller {
         $list = array_map(function ($item){
             $item["add_time"] = day($item["add_time"]);
             $item["content"] = str_replace('/uploads/', $this->base_url . '/uploads/', $item["content"]);
+            $item["content"] = str_replace('<img ', '<img style="display:block;width:100%;margin:0 auto;" ', $item["content"]);
             $item["description"] = mb_substr(strip_tags($item["content"]), 0, 72);
             return $item;
         },$notice);
@@ -125,6 +126,7 @@ class Index extends Controller {
             $info = Db::name("article")->where("id",$id)->field("id,title,content,add_time")->find();
             if(!empty($info)) {
                 $info["content"] = str_replace('/uploads/', $this->base_url . '/uploads/', $info["content"]);
+                $info["content"] = str_replace('<img ', '<img style="display:block;width:100%;margin:0 auto;" ', $info["content"]);
                 $info["add_time"] = day($info["add_time"]);
                 $this->result($info, 1, '信息通告详情', 'json');
             }
@@ -228,6 +230,7 @@ class Index extends Controller {
         $info["create_time"] = day($info["create_time"]);
         $info["description"] = mb_substr($info["description"], 0, 120);
         $info["content"] = str_replace('/uploads/', $this->base_url . '/uploads/',$info["content"]);
+        $info["content"] = str_replace('<img ', '<img style="display:block;width:100%;margin:0 auto;" ', $info["content"]);
         $this->result(compact("info"),1,"基金产品列表",'json');
     }
 
@@ -251,6 +254,7 @@ class Index extends Controller {
                 $info["tags"] = implode(' ', explode(',', $info["tags"]));
                 $info["price"] = '¥'.$info["price"];
                 $info["content"] = str_replace('/uploads/', $this->base_url . '/uploads/', $info["content"]);
+                $info["content"] = str_replace('<img ', '<img style="display:block;width:100%;margin:0 auto;" ', $info["content"]);
                 $this->result($info, 1, "查看金融咨询师详情", 'json');
             }
         }
@@ -271,6 +275,7 @@ class Index extends Controller {
         if($data){
             $data['add_time'] = day($data['add_time']);
             $data['content'] = str_replace("/uploads/","http://".$_SERVER['HTTP_HOST']."/uploads/",$data['content']);
+            $data["content"] = str_replace('<img ', '<img style="display:block;width:100%;margin:0 auto;" ', $data["content"]);
             $this->result($data,1,'单页信息', 'json');
         }
         $this->result('',0,'单页信息', 'json');
