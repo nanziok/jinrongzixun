@@ -19,7 +19,7 @@
 			<div class="subject-middle-left">后台管理系统</div>
 			<div class="subject-middle-right">
 				<div class="title">账号登录</div>
-				<form action="{:url('login_do')}" method="post" id="form">
+				<form action="{:url('/admin/login/login_do')}" method="post" id="form">
 
 				<div class="uname">
 					<input type="text"  id="name" name="name" placeholder="请输入登录账号" {if condition='$remember eq 1'}value="{$name}"{/if}>

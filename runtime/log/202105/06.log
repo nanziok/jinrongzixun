@@ -1,0 +1,145 @@
+---------------------------------------------------------------
+[ 2021-05-06T09:48:12+08:00 ] 127.0.0.1 GET /index.php/doc
+[ info ] jinrong.egg.cc/index.php/doc [运行时间：0.315132s][吞吐率：3.17req/s] [内存消耗：1,919.34kb] [文件加载：56]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\Api\\Doc\\DocController',
+    1 => 'index',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 Edg/90.0.818.51',
+  'upgrade-insecure-requests' => '1',
+  'dnt' => '1',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] Api\Doc\DocController->index[ F:\Work space\jinrongzixun\vendor\weiwei\api-doc\src\DocController.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\vendor\weiwei\api-doc\src\view\index.html [ array (
+  0 => 'title',
+  1 => 'version',
+  2 => 'copyright',
+  3 => 'static',
+  4 => 'root',
+  5 => 'doc',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2021-05-06T09:48:13+08:00 ] 127.0.0.1 GET /index.php/doc/list
+[ info ] jinrong.egg.cc/index.php/doc/list [运行时间：0.223076s][吞吐率：4.48req/s] [内存消耗：2,224.73kb] [文件加载：63]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\Api\\Doc\\DocController',
+    1 => 'getList',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/index.php/doc',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 Edg/90.0.818.51',
+  'x-requested-with' => 'XMLHttpRequest',
+  'dnt' => '1',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] Api\Doc\DocController->getList[ F:\Work space\jinrongzixun\vendor\weiwei\api-doc\src\DocController.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2021-05-06T09:48:14+08:00 ] 127.0.0.1 GET /index.php/doc/search
+[ info ] jinrong.egg.cc/index.php/doc/search [运行时间：0.042572s][吞吐率：23.49req/s] [内存消耗：2,226.87kb] [文件加载：63]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\Api\\Doc\\DocController',
+    1 => 'search',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/index.php/doc',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 Edg/90.0.818.51',
+  'dnt' => '1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] Api\Doc\DocController->search[ F:\Work space\jinrongzixun\vendor\weiwei\api-doc\src\DocController.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\vendor\weiwei\api-doc\src\view\search.html [ array (
+  0 => 'title',
+  1 => 'version',
+  2 => 'copyright',
+  3 => 'static',
+  4 => 'root',
+  5 => 'module',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2021-05-06T09:48:15+08:00 ] 127.0.0.1 GET /index.php/doc/info?name=app\api\controller\Login::login
+[ info ] jinrong.egg.cc/index.php/doc/info?name=app\api\controller\Login::login [运行时间：0.056222s][吞吐率：17.79req/s] [内存消耗：2,097.43kb] [文件加载：60]
+[ info ] [ LANG ] F:\Work space\jinrongzixun\core\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'method',
+  'method' => 
+  array (
+    0 => '\\Api\\Doc\\DocController',
+    1 => 'getInfo',
+  ),
+  'var' => 
+  array (
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://jinrong.egg.cc/index.php/doc',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 Edg/90.0.818.51',
+  'dnt' => '1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'jinrong.egg.cc',
+)
+[ info ] [ PARAM ] array (
+  'name' => 'app\\api\\controller\\Login::login',
+)
+[ info ] [ RUN ] Api\Doc\DocController->getInfo[ F:\Work space\jinrongzixun\vendor\weiwei\api-doc\src\DocController.php ]
+[ info ] [ VIEW ] F:\Work space\jinrongzixun\vendor\weiwei\api-doc\src\view\info.html [ array (
+  0 => 'title',
+  1 => 'version',
+  2 => 'copyright',
+  3 => 'static',
+  4 => 'root',
+  5 => 'doc',
+  6 => 'return',
+) ]
+[ info ] [ LOG ] INIT File

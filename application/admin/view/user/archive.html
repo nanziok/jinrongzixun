@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+{load href="/static/manage/layui/css/layui.css" /}
+{load href="/static/manage/layui/layui.js" /}
+{load href="/static/manage/css/style.css" /}
+{load href="/static/manage/js/public.js" /}
+{load href="/static/manage/js/jquery-1.8.1.min.js" /}
+<style>
+    .layui-table-tool-temp{padding-right:0px!important;}
+    .layui-table tr{height:60px!important;}
+    .layui-table-cell{height:50px!important;line-height:50px!important;}
+</style>
+<div class="layui-form layui-border-box">
+    <div class="layui-table-tool">
+        <div class="layui-table-tool-temp">
+            <div class="demoTable">
+                搜索用户： <div class="layui-inline"> <input class="layui-input" id="words" placeholder="请输入id|昵称|用户名|"/></div>
+                &nbsp;&nbsp;添加时间：<div class="layui-inline"> <input class="layui-input" id="start_date" value="{:input('start_date')}" placeholder="请输入"/></div>
+                ~~&nbsp;<div class="layui-inline"> <input class="layui-input" id="end_date" value="{:input('end_date')}" placeholder="请输入"/></div>
+                <button class="layui-btn layui-btn-sm" onclick="chongzai();">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+<table id="demo" lay-filter="test" class="layui-hide"></table>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit_id">查看</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script type="text/html" id="switchTpl">
+    <input type="checkbox" name="status" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="sexDemo" {{ d.status == 1 ? 'checked' : '' }}>
+</script>
+<script type="text/html" id="img">
+    <img src="{{d.user_headimg}}"  style='width:50px;height:50px;cursor:pointer;'>
+</script>
+<script>
+    var jiazai;
+    var table;
+    //JavaScript代码区域
+    layui.use('element', function(){
+        var element = layui.element;
+    });
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: '#start_date',
+            type: 'datetime'//指定元素
+        });
+        laydate.render({
+            elem: '#end_date',
+            type: 'datetime'//指定元素
+        });
+    });
+    layui.use('table', function(){
+        table = layui.table;
+        var form = layui.form;
+
+        //第一个实例
+        jiazai = function(){
+            table.render({
+                elem: '#demo',
+                hide:false,
+                page:true,
+                limit:20,
+                defaultToolbar:false,
+                url: "{:url('archive')}", //数据接口
+                cols: [[ //表头
+                    {field: 'id', title: '会员ID',width:100,align:'center'},
+                    {field:'user_image', title:'用户', templet: '#img', unresize: true,align:'center'},
+                    {field: 'user_nickname', title: '昵称',align:'center'},
+                    {field: 'title', title: '主题',width:220,align:'center'},
+                    {field: 'create_time', title: '添加时间',width:220,align:'center'},
+
+                    {fixed: 'right', title:'操作', align:'center', toolbar: '#barDemo'}
+                ]],
+                id:'demo'
+            });
+        }
+        jiazai();
+        table.on('tool(test)', function(obj){
+            switch(obj.event){
+                case 'edit_id':
+                    open_window(obj.data.id,"wdl_edit_archive",'编辑档案','70%', '900px');
+                    break;
+                case 'del':
+                    del(obj.data.id,"wdl_del_archive");
+                    break;
+                case 'coupon_id':
+                    open_window(obj.data.id, "wdl_add_coupon", "赠送优惠券","60%", "700px");
+                    break;
+                case 'add_archive':
+                    open_window(obj.data.id, "wdl_add_archive", "添加档案","70%", "900px");
+                    break;
+            };
+        });
+
+
+        form.on('switch(sexDemo)', function(obj){
+            var id = this.value;
+            var value = obj.elem.checked;
+            if(value == true){
+                status = 1;
+            }else{
+                status = 2;
+            }
+            var arr = {};
+            arr.id = id;
+            arr.status = status;
+            arr.table = 'user';
+            set_data(arr);
+        });
+
+    });
+    function add(){
+        open_window(0,"wdl_add",'添加会员','50%');
+    }
+    function chongzai(){
+        table.reload('demo', {
+            where: {
+                words:$("#words").val(),
+                start_date:$("#start_date").val(),
+                end_date:$("#end_date").val(),
+            }
+            ,page: {
+                curr: 1
+            }
+        })
+
+    }
+
+</script>
+</body>
+</html>
