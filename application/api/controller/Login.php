@@ -105,7 +105,7 @@ class Login extends Controller
                 $userInfo = $this->app->encryptor->decryptData($session['session_key'], $iv, $encryptedData);
                 $temp_array = [
                     "openid"   =>  $session["openid"],
-                    "unionid"  =>  in_array("unionid", $userInfo) ? $userInfo["unionid"] : "",
+                    "unionid"  =>  array_key_exists("unionid", $userInfo) ? $userInfo["unionid"] : "",
                     "platform" =>  'wxmp',
                     "user_info" =>  json_encode($userInfo),
                     "create_time" =>  time()
